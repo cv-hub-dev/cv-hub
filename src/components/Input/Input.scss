@@ -1,0 +1,21 @@
+.input {
+  background-color: #FBFBFB;
+  color: black;
+  border: 1px solid #CCCCCC;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  font-weight: 400;
+  display: inline-block;
+}
+
+.inputLabel {
+  font-size:0.8rem;
+  color: #59576F;
+}
+
+.inputGroup {
+  display:flex;
+  flex-direction: column;
+  grid-gap: 0.3rem;
+}

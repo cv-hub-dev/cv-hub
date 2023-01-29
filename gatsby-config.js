@@ -6,10 +6,26 @@ module.exports = {
     title: `new`,
     siteUrl: `https://www.yourdomain.tld`
   },
-  plugins: ["gatsby-plugin-sass", {
-    resolve: 'gatsby-plugin-manifest',
-    options: {
-      "icon": "src/images/icon.png"
+  plugins: [
+      {
+        resolve: 'gatsby-plugin-sass',
+        options: {
+          additionalData: `@import "${__dirname}/src/styles/general";`,
+        }
+      },
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        "icon": "src/images/icon.png"
+      }
+    },
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /assets/
+        }
+      }
     }
-  }]
+  ]
 };
