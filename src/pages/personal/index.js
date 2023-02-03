@@ -1,8 +1,10 @@
 import { Formik, Form } from "formik";
 import * as React from "react"
-import Input from '../../components/Input/Input';
-import Button from '../../components/Button/Button';
-import Preview from "../../components/Preview/Preview";
+import Input from '../../components/Input';
+// import TextArea from '../../components/TextArea';
+// import Checkbox from '../../components/Checkbox';
+import Button from '../../components/Button';
+import Preview from "../../components/Preview";
 import useLocalStorage from '../../useLocalStorate';
 
 
@@ -11,7 +13,9 @@ const PersonalPage = () => {
   const {storedValue: personalValues, setValue: setPersonalValues} = useLocalStorage('personal')
 
   const handleOnChange = ({values, changedValue}) => {
-    const changedKeyValPair = {[changedValue.target.name]: changedValue.target.value}
+    const changedKeyValPair = changedValue.target.type === `checkbox`
+    ? {[changedValue.target.name]: changedValue.target.checked}
+    : {[changedValue.target.name]: changedValue.target.value}
     setPersonalValues({...values, ...changedKeyValPair})
   }
   
@@ -22,6 +26,8 @@ const PersonalPage = () => {
     address: ``,
     linkedin: ``,
     github: ``,
+    // someTextArea: ``,
+    someCheckBox: false
   }
 
   return (
@@ -38,6 +44,9 @@ const PersonalPage = () => {
           <h3>Social</h3>
           <Input name="linkedin" type="url" label="LinkedIn" />
           <Input name="github" type="url" label="GitHub" />
+
+          {/* <TextArea name="someTextArea" label="Something" /> */}
+          {/* <Checkbox name="someCheckbox" label="Something" /> */}
 
           <Button to="/">Next</Button>
         </Form>

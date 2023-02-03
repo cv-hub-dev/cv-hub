@@ -1,0 +1,19 @@
+.checkbox {
+  accent-color: #6C63FF;
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.checkboxLabel {
+  font-size:0.8rem;
+  color: #59576F;
+  display:flex;
+  align-items: center;
+  grid-gap: 0.4rem;
+}
+
+.checkboxGroup {
+  display:flex;
+  flex-direction: column;
+  grid-gap: 0.3rem;
+}
