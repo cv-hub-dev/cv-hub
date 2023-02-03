@@ -1,7 +1,8 @@
 import * as React from 'react'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 
 const useLocalStorage = (key = "personal", initialValue = "") => {
+
   const [storedValue, setStoredValue] = useState(() => {
     if (typeof window === "undefined") {
       return initialValue;
@@ -16,17 +17,12 @@ const useLocalStorage = (key = "personal", initialValue = "") => {
   });
   
   const setValue = (value) => {
-    try {
-      const valueToStore =
-        value instanceof Function ? value(storedValue) : value;
-      setStoredValue(valueToStore);
-      if (typeof window !== "undefined") {
-        window.localStorage.setItem(key, JSON.stringify(valueToStore));
+      if (typeof window !== "undefined") {        
+        window.localStorage.setItem(key, JSON.stringify(value));
+        window.dispatchEvent(new Event("storage"));
+        setStoredValue(value)
       }
-    } catch (error) {
-      console.log(error);
     }
-  };
 
 
   return {

@@ -12,7 +12,7 @@ const PersonalPage = () => {
 
   const handleOnChange = ({values, changedValue}) => {
     const changedKeyValPair = {[changedValue.target.name]: changedValue.target.value}
-    setPersonalValues({...changedKeyValPair, ...values})
+    setPersonalValues({...values, ...changedKeyValPair})
   }
   
   const initialValues = {
