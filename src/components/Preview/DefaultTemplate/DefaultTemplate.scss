@@ -1,0 +1,40 @@
+.paper {
+  background-color: white;
+  width: 595px;
+  height: 842px;
+  scale: 0.8;
+  padding: 2rem;
+}
+
+.name {
+  font-size: 22px;
+  margin: 0;
+}
+
+.headerSection {
+  display: flex;
+  justify-content: space-between;
+  // border-bottom: 2px solid #DADADA;
+
+  &Right {
+    text-align: right;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  &Social {
+    display: flex;
+    justify-content: flex-end;
+    grid-gap:0.5rem;
+  }
+}
+
+.title {
+  font-size: 12px;
+  margin-top: 1rem;
+  font-weight: normal;
+  color: #6C63FF;
+}
+// .wrapper {
+//   padding:
+// }

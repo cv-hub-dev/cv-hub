@@ -1,7 +1,7 @@
 import * as React from "react"
 import {useEffect, useState} from "react"
-import "./Preview.scss"
-import useLocalStorage from '../../useLocalStorate';
+import DefaultTemplate from "./DefaultTemplate"
+// import "./Preview.scss"
 
 const allKeys = ['personal', 'education', 'experience', 'skills', 'complementary']
 
@@ -9,28 +9,29 @@ const Preview = () => {
   const [allValues, setAllValues] = useState([])
 
   window.addEventListener('storage', () => {
-    const mapValues = allKeys.map((singleKey) => {
-      return {
+    let newValues = {}
+    allKeys.forEach((singleKey) => {
+      newValues = {
+        ...newValues,
         [singleKey]: JSON.parse(window.localStorage.getItem(singleKey))
       };
     })
-    setAllValues(mapValues)
+    setAllValues(newValues)
   })
 
   useEffect(() => {
-    const mapValues = allKeys.map((singleKey) => {
-      return {
+    let newValues = {}
+    allKeys.forEach((singleKey) => {
+      newValues = {
+        ...newValues,
         [singleKey]: JSON.parse(window.localStorage.getItem(singleKey))
       };
     })
-    setAllValues(mapValues)
+    setAllValues(newValues)
   }, []);
 
-
   return(
-  <pre>
-    {JSON.stringify(allValues, null, 2)}
-  </pre>
+    <DefaultTemplate values={allValues} />
 )}
 
 export default Preview

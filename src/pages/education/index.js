@@ -22,7 +22,7 @@ const EducationPage = () => {
     <div className="duo-layout">
       <Formik initialValues={educationValues || initialValues}>
         {({ values }) => (
-          <Form className="form" onChange={(changedValue) => handleOnChange({ values, changedValue })}>
+          <Form className="form" onChange={(changedValue) => handleOnChange({ values, changedValue, setValues: setEducationValues })}>
             <h3>Education</h3>
             <Input name="schoolName" required type="text" label="School Name" />
             <Input name="degree" required type="text" label="Degree" />

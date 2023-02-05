@@ -29,7 +29,7 @@ const PersonalPage = () => {
     <div className="duo-layout">
       <Formik initialValues={personalValues || initialValues}>
         {({values}) => (
-        <Form className="form" onChange={(changedValue) => handleOnChange({values, changedValue, setValue: setPersonalValues})}>
+        <Form className="form" onChange={(changedValue) => handleOnChange({values, changedValue, setValues: setPersonalValues})}>
           <h3>General</h3>
           <Input name="name" required type="text" label="Full Name" />
           <Input name="phone" type="tel" label="Phone number" />
