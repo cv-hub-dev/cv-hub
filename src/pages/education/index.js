@@ -2,18 +2,13 @@ import React from "react"
 import { Formik, Form } from "formik"
 import Input from '../../components/Input';
 import Button from '../../components/Button';
+import TextArea from "../../components/TextArea";
 import Preview from "../../components/Preview";
 import useLocalStorage from '../../useLocalStorate';
+import { handleOnChange } from '../helpers';
+
 const EducationPage = () => {
   const { storedValue: educationValues, setValue: setEducationValues } = useLocalStorage("education")
-
-  const handleOnChange = ({ values, changedValue }) => {
-    const changedKeyValPair =
-      changedValue.target.type === "checkbox"
-        ? { [changedValue.target.name]: changedValue.target.checked }
-        : { [changedValue.target.name]: changedValue.target.value }
-    setEducationValues({ ...values, ...changedKeyValPair })
-  }
 
   const initialValues = {
     schoolName: "",
@@ -33,10 +28,12 @@ const EducationPage = () => {
             <Input name="degree" required type="text" label="Degree" />
             <Input name="startDate" required type="date" label="Start Date" />
             <Input name="endDate" required type="date" label="End Date" />
-            <Input name="description" required type="text" label="Description" />
+            <TextArea name="description" required type="text" label="Description" />
 
-            <Button to="/personal">Back</Button>
-            <Button to="/">Next</Button>
+            <div className="buttonsWrapper">
+              <Button variant="secondary" to="/personal">Back</Button>
+              <Button to="/">Next</Button>
+            </div>
           </Form>
         )}
         
