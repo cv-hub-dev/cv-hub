@@ -14,7 +14,7 @@ const DefaultTemplate = ({values}) => {
           <div className="headerSection">
             <div className="headerSectionLeft">
               <h1 className="name">{personal.name}</h1>
-              <h3 className="title">{personal.title}</h3>
+              <h3 className="jobTitle">{personal.title}</h3>
             </div>
             <div className="headerSectionRight">
               <div>{personal.phone}</div>
