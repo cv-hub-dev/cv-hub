@@ -6,49 +6,48 @@ import Input from '../../components/Input';
 import Button from '../../components/Button';
 import Preview from "../../components/Preview";
 import useLocalStorage from '../../useLocalStorate';
+import { handleOnChange } from '../helpers';
 
 
 const PersonalPage = () => {
 
   const {storedValue: personalValues, setValue: setPersonalValues} = useLocalStorage('personal')
-
-  const handleOnChange = ({values, changedValue}) => {
-    const changedKeyValPair = changedValue.target.type === `checkbox`
-    ? {[changedValue.target.name]: changedValue.target.checked}
-    : {[changedValue.target.name]: changedValue.target.value}
-    setPersonalValues({...values, ...changedKeyValPair})
-  }
   
   const initialValues = {
     name: ``,
     phone: ``,
     email: ``,
     address: ``,
+    title: ``,
     linkedin: ``,
     github: ``,
     // someTextArea: ``,
-    someCheckBox: false
+    // someCheckBox: false
   }
 
   return (
     <div className="duo-layout">
       <Formik initialValues={personalValues || initialValues}>
         {({values}) => (
-        <Form className="form" onChange={(changedValue) => handleOnChange({values, changedValue})}>
+        <Form className="form" onChange={(changedValue) => handleOnChange({values, changedValue, setValue: setPersonalValues})}>
           <h3>General</h3>
           <Input name="name" required type="text" label="Full Name" />
           <Input name="phone" type="tel" label="Phone number" />
           <Input name="email" type="email" label="Email address" />
           <Input name="address" type="text" label="Home address" />
+          <Input name="title" type="text" label="Job Title" />
 
           <h3>Social</h3>
           <Input name="linkedin" type="url" label="LinkedIn" />
           <Input name="github" type="url" label="GitHub" />
 
-          {/* <TextArea name="someTextArea" label="Something" /> */}
-          {/* <Checkbox name="someCheckbox" label="Something" /> */}
+          {/* <TextArea name="someTextArea" label="Something" />
+          <Checkbox name="someCheckbox" label="Something" /> */}
 
-          <Button to="/">Next</Button>
+          <div className="buttonsWrapper">
+            <Button variant="secondary" to="/education">Skip</Button>
+            <Button to="/">Next</Button>
+          </div>
         </Form>
         )}
       </Formik>

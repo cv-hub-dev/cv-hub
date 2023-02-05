@@ -18,3 +18,9 @@ body, button, input {
   padding: 2rem;
 }
 
+.buttonsWrapper {
+  display: flex;
+  grid-gap: 0.5rem;
+  justify-content: flex-end;
+}
+
