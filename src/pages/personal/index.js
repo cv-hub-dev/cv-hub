@@ -45,7 +45,7 @@ const PersonalPage = () => {
           <Checkbox name="someCheckbox" label="Something" /> */}
 
           <div className="buttonsWrapper">
-            <Button variant="secondary" to="/education">Back</Button>
+            <Button variant="secondary" to="/">Back</Button>
             <Button to="/education">Next</Button>
           </div>
         </Form>
