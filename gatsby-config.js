@@ -10,7 +10,7 @@ module.exports = {
       {
         resolve: 'gatsby-plugin-sass',
         options: {
-          additionalData: `@import "${__dirname}/src/styles/general.scss";`,
+          additionalData: `@import "./src/styles/general.scss";`,
         }
       },
     {

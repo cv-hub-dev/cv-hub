@@ -32,7 +32,7 @@ const EducationPage = () => {
 
             <div className="buttonsWrapper">
               <Button variant="secondary" to="/personal">Back</Button>
-              <Button to="/">Next</Button>
+              <Button to="/skills">Next</Button>
             </div>
           </Form>
         )}
