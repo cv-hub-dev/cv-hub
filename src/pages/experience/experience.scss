@@ -1,0 +1,31 @@
+.optional {
+   color: #A9A9A9;
+   font-weight: 400;
+ }
+
+.datesFieldsWrapper {
+   display: flex;
+   justify-content: space-evenly;
+}
+
+.checkboxLabel {
+   font-size:0.9rem;
+   font-weight: 500;
+   color: #A9A9A9;
+   display:flex;
+   align-items: center;
+   grid-gap: 0.4rem;
+ }
+
+// .addBtn {
+
+// }
+
+// .checkboxLabel {
+//    font-size:0.9rem;
+//    font-weight: 500;
+//    color: #000000;
+//    display:flex;
+//    align-items: center;
+//    grid-gap: 0.4rem;
+//  }
