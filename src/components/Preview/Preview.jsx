@@ -31,7 +31,12 @@ const Preview = () => {
   }, []);
 
   return(
-    <DefaultTemplate values={allValues} />
+    <>
+      {/* <DefaultTemplate values={allValues} /> */}
+      <pre>
+        {JSON.stringify(allValues, null, 2)}
+      </pre>
+    </>
 )}
 
 export default Preview
