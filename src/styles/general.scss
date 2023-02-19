@@ -3,6 +3,10 @@ body, button, input {
   font-family: 'Montserrat', Courier, monospace;
 }
 
+h1, h2, h3, h4 {
+  margin: 0;
+}
+
 .duo-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
