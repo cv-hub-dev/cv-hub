@@ -1,5 +1,4 @@
-
-.default {
+.classic {
 
   &Paper {
     background-color: white;
@@ -12,34 +11,45 @@
   &Name {
     font-size: 22px;
     margin: 0;
+    margin-top: 1rem;
   }
 
   &HeaderSection {
-    display: flex;
-    justify-content: space-between;
+    text-align: center;
 
-    &Right {
-      text-align: right;
-      font-size: 12px;
-      line-height: 1.6;
+    &Contact {
+      font-size: 0.6rem;
+      display: flex;
+      grid-gap: 1rem;
+      align-content: center;
+      align-items: center;
+      justify-content: center;
+
+      &Item {
+        display: flex;
+        align-items: center;
+        grid-gap: 0.25rem;
+      }
     }
 
     &Social {
       display: flex;
-      justify-content: flex-end;
-      grid-gap:0.5rem;
+      justify-content: center;
+      grid-gap: 0.5rem;
+      margin-top: 0.6rem;
     }
   }
 
   &JobTitle {
-    font-size: 12px;
-    margin-top: 1rem;
-    font-weight: normal;
+    font-size: 0.8rem;
+    margin-top: 0.4rem;
+    margin-bottom: 0.6rem;
+    font-weight: 500;
     color: #6C63FF;
   }
 
   &Separator {
-    margin: 1rem 0;
+    margin: 2.4rem 0 1rem;
     border: 1px solid #DADADA;
   }
 
@@ -58,19 +68,30 @@
     }
     &Layout {
       display: grid;
-      grid-template-columns: 1fr 7rem;
+      grid-template-columns: 7rem 1fr;
       grid-gap: 2rem;
     }
   }
 
 
   &SectionList {
-    padding-inline-start: 1rem;
     margin: 0;
+    padding-left: 2rem;
+    border-left: 1px solid #DADADA;
   }
 
   &SectionTitle {
-    margin: 1.2rem 0 0.8rem;
+    font-size: 1rem;
+    margin: 1.8rem 0 0.8rem;
+    & span {
+      margin-left:-0.25rem;
+      margin-right: 0.75rem;
+    }
+    &Center {
+      font-size: 1rem;
+      text-align: center;
+      margin: 1.8rem 0 0.8rem;
+    }
   }
 
   &SectionName {
@@ -106,32 +127,22 @@
 
   &SkillName {
     font-size: 0.8rem;
-    display: flex;
-    align-items: center;
-    grid-gap: 0.25rem;
     font-weight: 600;
     color: #808080;
     margin-top: 1rem;
+    text-align: center;
     margin-bottom: 0.25rem;
   }
 
   &SkillList {
+    text-align: center;
     margin: 0;
-    margin-left: 1.4rem;
     padding-inline-start: 0;
     font-size: 0.8rem;
     list-style: none;
     display: flex;
     flex-direction: column;
     grid-gap: 0.3rem;
-    &Item {
-      &:before {
-        position: absolute;
-        content: '--- ';
-        margin-left: -1.3rem;
-        color: #DADADA;
-      }
-    }
   }
 
 }

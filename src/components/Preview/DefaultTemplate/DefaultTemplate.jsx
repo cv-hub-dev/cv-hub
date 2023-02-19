@@ -1,76 +1,6 @@
 import * as React from "react"
 import "./DefaultTemplate.scss"
-
-const defaultValues = {
-  personal: {
-    name: "Anastasia Kashkinova",
-    phone: "123-12323-2323",
-    address: "Southbank, Australia",
-    email: "anastasia.kashkinova@gmail.com",
-    linkedin: "",
-    github: "",
-    title: "Front-end Developer",
-  },
-  education: {
-    schools: [{
-      schoolName: "University of London",
-      degree: "BSc Computer Science",
-      startDate: "01/04/2019",
-      endDate: "20/03/2022",
-      current: false,
-      description: "Bachelor of Computer Science with ML/AI Specialism"
-    }]
-  },
-  experience: {
-    jobs: [{
-      jobTitle: "UX Engineer",
-      companyName: "Sesimi",
-      location: "Melbourne, Australia",
-      description: "Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.",
-      startDate: "21/10/2020",
-      endDate: "",
-      current: true,
-    },
-    {
-      jobTitle: "Front-end Engineer",
-      companyName: "RedBubble",
-      location: "Melbourne, Australia",
-      description: "Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.",
-      startDate: "01/04/2020",
-      endDate: "20/10/2020",
-      current: false,
-    }]
-  },
-  skills: {
-    javascript: ["React", "JSX", "ES6", "Mocha", "Enzyme"],
-    html: ["HTML5", "Pug"],
-    css: ["CSS3", "SASS"],
-    other: ["Scrum", "Agile"]
-  },
-  complementary: {
-    sections: [{
-      label: "Languages",
-      options: ["English", "German"]
-    }]
-  },
-  awards: {
-    certs: [
-      {
-        title: `AWS Solutions Architect`,
-        type: `Certification`,
-        year: `2021`
-      }
-    ]
-  },
-  projects: [
-    {
-      title: `Uber App Clone`,
-      year: `2022`,
-      link: `github.com`,
-      description: `Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.`
-    }
-  ]
-}
+import {defaultValues} from '../dummyData';
 
 const skillGroupMapper = {
   javascript: {
@@ -104,34 +34,34 @@ const DefaultTemplate = ({values}) => {
   return(
     <>
       <div className="wrapper">
-        <div className="paper">
-          <div className="headerSection">
-            <div className="headerSectionLeft">
-              <h1 className="name">{personal.name}</h1>
-              <h3 className="jobTitle">{personal.title}</h3>
+        <div className="defaultPaper">
+          <div className="defaultHeaderSection">
+            <div className="defaultHeaderSectionLeft">
+              <h1 className="defaultName">{personal.name}</h1>
+              <h3 className="defaultJobTitle">{personal.title}</h3>
             </div>
-            <div className="headerSectionRight">
+            <div className="defaultHeaderSectionRight">
               <div>{personal.phone}</div>
               <div>{personal.email}</div>
               <div>{personal.address}</div>
             </div>
           </div>
-          <div className="headerSectionSocial">
+          <div className="defaultHeaderSectionSocial">
             <img width={16} height={16} src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" />
             <img width={16} height={16} src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" />
           </div>
-          <hr className="separator" />
-          <div className="sectionLayout">
+          <hr className="defaultSeparator" />
+          <div className="defaultSectionLayout">
             <div>
             {education?.schools?.length && (
                 <div>
-                  <h4 className="sectionTitle">Education</h4>
-                  <ul className="sectionList">
+                  <h4 className="defaultSectionTitle">Education</h4>
+                  <ul className="defaultSectionList">
                   {education.schools.map((school) => (
-                    <li className="section">
-                      <div className="sectionName">{school.schoolName}, <em>{school.degree}</em></div>
-                      <div className="sectionDate">{school.startDate} - {school.endDate}</div>
-                      <div className="sectionDesc">{school.description}</div>
+                    <li className="defaultSection">
+                      <div className="defaultSectionName">{school.schoolName}, <em>{school.degree}</em></div>
+                      <div className="defaultSectionDate">{school.startDate} - {school.endDate}</div>
+                      <div className="defaultSectionDesc">{school.description}</div>
                     </li>
                   ))}
                   </ul>
@@ -139,13 +69,13 @@ const DefaultTemplate = ({values}) => {
               )}
               {experience?.jobs?.length && (
                 <div>
-                  <h4 className="sectionTitle">Work Experience</h4>
-                  <ul className="sectionList">
+                  <h4 className="defaultSectionTitle">Work Experience</h4>
+                  <ul className="defaultSectionList">
                   {experience.jobs.map((job) => (
-                    <li className="section">
-                      <div className="sectionName">{job.jobTitle}, <em>{job.companyName}</em></div>
-                      <div className="sectionDate">{job.startDate} - {job.endDate}</div>
-                      <div className="sectionDesc">{job.description}</div>
+                    <li className="defaultSection">
+                      <div className="defaultSectionName">{job.jobTitle}, <em>{job.companyName}</em></div>
+                      <div className="defaultSectionDate">{job.startDate} - {job.endDate}</div>
+                      <div className="defaultSectionDesc">{job.description}</div>
                     </li>
                   ))}
                   </ul>
@@ -153,12 +83,12 @@ const DefaultTemplate = ({values}) => {
               )}
               {awards?.certs?.length && (
                 <div>
-                  <h4 className="sectionTitle">Certifications</h4>
-                  <ul className="sectionList">
+                  <h4 className="defaultSectionTitle">Certifications</h4>
+                  <ul className="defaultSectionList">
                   {awards.certs.map((cert) => (
-                    <li className="section">
-                      <div className="sectionName">{cert.title}</div>
-                      <div className="sectionDate">{cert.year}</div>
+                    <li className="defaultSection">
+                      <div className="defaultSectionName">{cert.title}</div>
+                      <div className="defaultSectionDate">{cert.year}</div>
                     </li>
                   ))}
                   </ul>
@@ -166,18 +96,18 @@ const DefaultTemplate = ({values}) => {
               )}
               {projects?.length && (
                 <div>
-                  <h4 className="sectionTitle">Projects</h4>
-                  <ul className="sectionList">
+                  <h4 className="defaultSectionTitle">Projects</h4>
+                  <ul className="defaultSectionList">
                   {projects.map((proj) => (
-                    <li className="section">
-                      <div className="sectionName">{proj.title}</div>
-                      <div className="sectionDate">
+                    <li className="defaultSection">
+                      <div className="defaultSectionName">{proj.title}</div>
+                      <div className="defaultSectionDate">
                         {proj.year}
                         {proj.link && (
-                          <a className="sectionLink" href="" target="_blank">{linkIcon}{`View here`}</a>
+                          <a className="defaultSectionLink" href="" target="_blank">{linkIcon}{`View here`}</a>
                         )}
                       </div>
-                      <div className="sectionDesc">{proj.description}</div>
+                      <div className="defaultSectionDesc">{proj.description}</div>
                     </li>
                   ))}
                   </ul>
@@ -187,14 +117,14 @@ const DefaultTemplate = ({values}) => {
               <div>
                 {skills !== null && (
                   <div>
-                    <h4 className="sectionTitle">Skills</h4>
+                    <h4 className="defaultSectionTitle">Skills</h4>
                     {skillGroups.map((group) => (
-                      <div className="skillGroup">
-                        <div className="skillName">
-                          <div className="skillNameIcon">{skillGroupMapper[group].icon}</div>
+                      <div className="defaultSkillGroup">
+                        <div className="defaultSkillName">
+                          <div className="defaultSkillNameIcon">{skillGroupMapper[group].icon}</div>
                           {skillGroupMapper[group].name}
                         </div>
-                        <ul className="skillList">
+                        <ul className="defaultSkillList">
                           {skills[group].map(skill => <li>{skill}</li>)}
                         </ul>
                       </div>
@@ -205,10 +135,10 @@ const DefaultTemplate = ({values}) => {
                   <div>
                     {complementary.sections.map((section) => (
                       <>
-                        <h4 className="sectionTitle">{section.label}</h4>
-                        <div className="skillGroup">
-                          <ul className="skillList">
-                            {section.options.map(option => <li className="skillListItem">{option}</li>)}
+                        <h4 className="defaultSectionTitle">{section.label}</h4>
+                        <div className="defaultSkillGroup">
+                          <ul className="defaultSkillList">
+                            {section.options.map(option => <li className="defaultSkillListItem">{option}</li>)}
                           </ul>
                         </div>
                       </>
