@@ -33,9 +33,10 @@ const Preview = () => {
   return(
     <>
       {/* <DefaultTemplate values={allValues} /> */}
-      <pre>
+      <DefaultTemplate values={allValues} />
+      {/* <pre>
         {JSON.stringify(allValues, null, 2)}
-      </pre>
+      </pre> */}
     </>
 )}
 
