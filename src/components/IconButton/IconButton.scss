@@ -1,25 +1,13 @@
-.button {
+.iconButton {
   border: none;
   box-shadow: none;
   border: 1px solid transparent;
   font-size: 1rem;
-  padding: 0.8rem 1.5rem;
+  padding: 0.5rem 1rem;
   border-radius: 0.2rem;
   font-weight: 600;
   text-decoration: none;
   display: inline-block;
-  cursor: pointer;
-
-  &Primary {
-    background-color: #6C63FF;
-    color: white;
-  }
-
-  &Secondary {
-    background-color: transparent;
-    border-color: #6C63FF;
-    color: #6C63FF;
-  }
 }
 
 // .buttonSecondary {

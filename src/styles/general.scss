@@ -23,8 +23,18 @@ h1, h2, h3, h4 {
 }
 
 .buttonsWrapper {
+  margin: 0.5rem 0;
   display: flex;
   grid-gap: 0.5rem;
   justify-content: flex-end;
+}
+
+.displayContents {
+  display: contents;
+}
+
+.formDateWrapper {
+  display: flex;
+  grid-gap: 1rem;
 }
 

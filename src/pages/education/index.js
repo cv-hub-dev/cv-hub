@@ -2,6 +2,7 @@ import React from "react"
 import { Formik, Form, FieldArray } from "formik"
 import Input from '../../components/Input';
 import Button from '../../components/Button';
+import IconButton from '../../components/IconButton';
 import TextArea from "../../components/TextArea";
 import Preview from "../../components/Preview";
 import useLocalStorage from '../../useLocalStorate';
@@ -36,25 +37,29 @@ const EducationPage = () => {
 
             <FieldArray name="education">
               {({ push, remove }) => (
-                <div>
+                <div className="displayContents">
                   {values.education.map((_, index) => (
-                    <div key={index}>
+                    <div key={index} className="displayContents">
                       <Input name={`education[${index}].schoolName`} required type="text" label="School Name" />
                       <Input name={`education[${index}].degree`} required type="text" label="Degree" />
-                      <Input name={`education[${index}].startDate`} required type="date" label="Start Date" />
-                      <Input name={`education[${index}].endDate`} required type="date" label="End Date" />
+                      <div className="formDateWrapper">
+                        <Input name={`education[${index}].startDate`} required type="date" label="Start Date" />
+                        <Input name={`education[${index}].endDate`} required type="date" label="End Date" />
+                      </div>
                       <TextArea name={`education[${index}].description`} required type="text" label="Description" />
                       {values.education.length > 1 && (
-                        <Button variant="secondary" onClick={() => remove(index)}>
-                          Remove
-                        </Button>
+                        <div className="buttonsWrapper">
+                          <IconButton type="remove" variant="secondary" onClick={() => remove(index)} />
+                        </div>
                       )}
                     </div>
                   ))}
                   {values.education.length < 3 && (
-                    <Button variant="secondary" onClick={() => push(initialValues.education[0])}>
-                      Add Education
-                    </Button>
+                    <div>
+                      <Button type="button" variant="secondary" onClick={() => push(initialValues.education[0])}>
+                        Add Education
+                      </Button>
+                    </div>
                   )}
                   {errors.education && touched.education && <div>{errors.education}</div>}
                 </div>
