@@ -43,126 +43,124 @@ const DefaultTemplate = ({values}) => {
   
   return(
     <>
-      <div className="wrapper">
-        <div className="classicPaper">
-          <div className="classicHeaderSection">
-            <div className="classicHeaderSectionLeft">
-              <h1 className="classicName">{personal.name}</h1>
-              <h3 className="classicJobTitle">{personal.title}</h3>
-            </div>
-            <div className="classicHeaderSectionContact">
-              <div className="classicHeaderSectionContactItem">{icons.phone} {personal.phone}</div>
-              <div className="classicHeaderSectionContactItem">{icons.email} {personal.email}</div>
-              <div className="classicHeaderSectionContactItem">{icons.address} {personal.address}</div>
-            </div>
+      <div className="classicPaper">
+        <div className="classicHeaderSection">
+          <div className="classicHeaderSectionLeft">
+            <h1 className="classicName">{personal.name}</h1>
+            <h3 className="classicJobTitle">{personal.title}</h3>
           </div>
-          {(personal.linkedin || personal.github) && (
-            <div className="classicHeaderSectionSocial">
-              {personal.github && <a href={personal.github} target="_blank"><img width={14} height={14} src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" /></a>}
-              {personal.linkedin && <a href={personal.linkedin} target="_blank"><img width={14} height={14} src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" /></a>}
+          <div className="classicHeaderSectionContact">
+            <div className="classicHeaderSectionContactItem">{icons.phone} {personal.phone}</div>
+            <div className="classicHeaderSectionContactItem">{icons.email} {personal.email}</div>
+            <div className="classicHeaderSectionContactItem">{icons.address} {personal.address}</div>
+          </div>
+        </div>
+        {(personal.linkedin || personal.github) && (
+          <div className="classicHeaderSectionSocial">
+            {personal.github && <a href={personal.github} target="_blank"><img width={14} height={14} src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" /></a>}
+            {personal.linkedin && <a href={personal.linkedin} target="_blank"><img width={14} height={14} src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" /></a>}
+          </div>
+          )
+        }
+        <hr className="classicSeparator" />
+        <div className="classicSectionLayout">
+        <div>
+          {skills !== null && (
+            <div>
+              <h4 className="classicSectionTitleCenter">Skills</h4>
+              {skillGroups.map((group) => (
+                <div className="classicSkillGroup">
+                  <div className="classicSkillName">
+                    {skillGroupMapper[group].name}
+                  </div>
+                  <ul className="classicSkillList">
+                    {skills[group].map(skill => <li>{skill}</li>)}
+                  </ul>
+                </div>
+              ))}
             </div>
-            )
-          }
-          <hr className="classicSeparator" />
-          <div className="classicSectionLayout">
-          <div>
-            {skills !== null && (
-              <div>
-                <h4 className="classicSectionTitleCenter">Skills</h4>
-                {skillGroups.map((group) => (
+          )}
+          {complementary !== null && (
+            <div>
+              {complementary.sections.map((section) => (
+                <>
+                  <h4 className="classicSectionTitleCenter">{section.label}</h4>
                   <div className="classicSkillGroup">
-                    <div className="classicSkillName">
-                      {skillGroupMapper[group].name}
-                    </div>
                     <ul className="classicSkillList">
-                      {skills[group].map(skill => <li>{skill}</li>)}
+                      {section.options.map(option => <li className="classicSkillListItem">{option}</li>)}
                     </ul>
                   </div>
-                ))}
-              </div>
-            )}
-            {complementary !== null && (
-              <div>
-                {complementary.sections.map((section) => (
-                  <>
-                    <h4 className="classicSectionTitleCenter">{section.label}</h4>
-                    <div className="classicSkillGroup">
-                      <ul className="classicSkillList">
-                        {section.options.map(option => <li className="classicSkillListItem">{option}</li>)}
-                      </ul>
-                    </div>
-                  </>
-                ))}
-              </div>
-            )}
-          </div>
-            <div>
-            {education?.schools?.length && (
-                <div>
-                  <h4 className="classicSectionTitle"><span>{icons.education}</span>Education</h4>
-                  <ul className="classicSectionList">
-                  {education.schools.map((school) => (
-                    <li className="classicSection">
-                      <div className="classicSectionName">{school.schoolName}, <em>{school.degree}</em></div>
-                      <div className="classicSectionDate">{school.startDate} - {school.endDate}</div>
-                      <div className="classicSectionDesc">{school.description}</div>
-                    </li>
-                  ))}
-                  </ul>
-                </div>
-              )}
-              {experience?.jobs?.length && (
-                <div>
-                  <h4 className="classicSectionTitle"><span>{icons.work}</span>Work Experience</h4>
-                  <ul className="classicSectionList">
-                  {experience.jobs.map((job) => (
-                    <li className="classicSection">
-                      <div className="classicSectionName">{job.jobTitle}, <em>{job.companyName}</em></div>
-                      <div className="classicSectionDate">{job.startDate} - {job.endDate}</div>
-                      <div className="classicSectionDesc">{job.description}</div>
-                    </li>
-                  ))}
-                  </ul>
-                </div>
-              )}
-              {awards?.certs?.length && (
-                <div>
-                  <h4 className="classicSectionTitle"><span>{icons.certs}</span>Certifications</h4>
-                  <ul className="classicSectionList">
-                  {awards.certs.map((cert) => (
-                    <li className="classicSection">
-                      <div className="classicSectionName">{cert.title}</div>
-                      <div className="classicSectionDate">{cert.year}</div>
-                    </li>
-                  ))}
-                  </ul>
-                </div>
-              )}
-              {projects?.length && (
-                <div>
-                  <h4 className="classicSectionTitle"><span>{icons.projects}</span>Projects</h4>
-                  <ul className="classicSectionList">
-                  {projects.map((proj) => (
-                    <li className="classicSection">
-                      <div className="classicSectionName">{proj.title}</div>
-                      <div className="classicSectionDate">
-                        {proj.year}
-                        {proj.link && (
-                          <a className="classicSectionLink" href="" target="_blank">{linkIcon}{`View here`}</a>
-                        )}
-                      </div>
-                      <div className="classicSectionDesc">{proj.description}</div>
-                    </li>
-                  ))}
-                  </ul>
-                </div>
-              )}
-              </div>
+                </>
+              ))}
             </div>
-          {/* <pre>
-            {JSON.stringify(values, null, 2)}
-          </pre> */}
+          )}
         </div>
+          <div>
+          {education?.schools?.length && (
+              <div>
+                <h4 className="classicSectionTitle"><span>{icons.education}</span>Education</h4>
+                <ul className="classicSectionList">
+                {education.schools.map((school) => (
+                  <li className="classicSection">
+                    <div className="classicSectionName">{school.schoolName}, <em>{school.degree}</em></div>
+                    <div className="classicSectionDate">{school.startDate} - {school.endDate}</div>
+                    <div className="classicSectionDesc">{school.description}</div>
+                  </li>
+                ))}
+                </ul>
+              </div>
+            )}
+            {experience?.jobs?.length && (
+              <div>
+                <h4 className="classicSectionTitle"><span>{icons.work}</span>Work Experience</h4>
+                <ul className="classicSectionList">
+                {experience.jobs.map((job) => (
+                  <li className="classicSection">
+                    <div className="classicSectionName">{job.jobTitle}, <em>{job.companyName}</em></div>
+                    <div className="classicSectionDate">{job.startDate} - {job.endDate}</div>
+                    <div className="classicSectionDesc">{job.description}</div>
+                  </li>
+                ))}
+                </ul>
+              </div>
+            )}
+            {awards?.certs?.length && (
+              <div>
+                <h4 className="classicSectionTitle"><span>{icons.certs}</span>Certifications</h4>
+                <ul className="classicSectionList">
+                {awards.certs.map((cert) => (
+                  <li className="classicSection">
+                    <div className="classicSectionName">{cert.title}</div>
+                    <div className="classicSectionDate">{cert.year}</div>
+                  </li>
+                ))}
+                </ul>
+              </div>
+            )}
+            {projects?.length && (
+              <div>
+                <h4 className="classicSectionTitle"><span>{icons.projects}</span>Projects</h4>
+                <ul className="classicSectionList">
+                {projects.map((proj) => (
+                  <li className="classicSection">
+                    <div className="classicSectionName">{proj.title}</div>
+                    <div className="classicSectionDate">
+                      {proj.year}
+                      {proj.link && (
+                        <a className="classicSectionLink" href="" target="_blank">{linkIcon}{`View here`}</a>
+                      )}
+                    </div>
+                    <div className="classicSectionDesc">{proj.description}</div>
+                  </li>
+                ))}
+                </ul>
+              </div>
+            )}
+            </div>
+          </div>
+        {/* <pre>
+          {JSON.stringify(values, null, 2)}
+        </pre> */}
       </div>
     </>
 )}

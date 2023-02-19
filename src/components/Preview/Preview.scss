@@ -1,0 +1,40 @@
+.preview {
+  &Wrapper {
+    &TopBar {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background-color: rgba(230,230,230,0.5);
+    }
+  }
+
+  &Message {
+    font-size: 0.8rem;
+    color: #737373;
+  }
+
+  &Select {
+    font-size: 0.8rem;
+    color: #737373;
+    background-color: transparent;
+    border-radius: 0.25rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+
+    &Group {
+      display: flex;
+      grid-gap: 0.25rem;
+    }
+
+    &Label {
+      font-size: 0.8rem;
+      color: #737373;
+    }
+
+  }
+}

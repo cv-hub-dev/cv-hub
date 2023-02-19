@@ -13,10 +13,14 @@ const icons = {
 const BoldTemplate = ({values}) => {
   
   const {personal, education, experience, skills, complementary, awards, projects} = defaultValues
+  console.log(complementary.sections)
   const skillGroups = Object.keys(skills)
   let allSkills = [];
   skillGroups.forEach(group => {
     allSkills = [...allSkills, ...skills[group]]
+  })
+  complementary.sections.forEach(section => {
+    allSkills = [...allSkills, ...section.options]
   })
 
 
@@ -24,7 +28,6 @@ const BoldTemplate = ({values}) => {
   
   return(
     <>
-      <div className="wrapper">
         <div className="boldPaper">
           <div className="boldHeaderSection">
             <div className="boldHeaderSectionName">
@@ -137,10 +140,6 @@ const BoldTemplate = ({values}) => {
                 )}
               </div> */}
             </div>
-          {/* <pre>
-            {JSON.stringify(values, null, 2)}
-          </pre> */}
-        </div>
       </div>
     </>
 )}
