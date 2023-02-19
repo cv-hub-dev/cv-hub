@@ -46,10 +46,12 @@ const DefaultTemplate = ({values}) => {
               <div>{personal.address}</div>
             </div>
           </div>
-          <div className="defaultHeaderSectionSocial">
-            <img width={16} height={16} src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" />
-            <img width={16} height={16} src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" />
-          </div>
+          {(personal.linkedin || personal.github) && (
+            <div className="defaultHeaderSectionSocial">
+              {personal.github && <a href={personal.github} target="_blank"><img width={16} height={16} src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" /></a>}
+              {personal.linkedin && <a href={personal.linkedin} target="_blank"><img width={16} height={16} src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" /></a>}
+            </div>
+          )}
           <hr className="defaultSeparator" />
           <div className="defaultSectionLayout">
             <div>

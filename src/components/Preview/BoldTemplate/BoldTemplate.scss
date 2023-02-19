@@ -1,5 +1,5 @@
 
-.default {
+.bold {
   &Paper {
     background-color: white;
     width: 595px;
@@ -9,38 +9,60 @@
   }
 
   &Name {
-    font-size: 22px;
+    font-size: 1.4rem;
     margin: 0;
   }
 
-  &HeaderSection {
-    display: flex;
-    justify-content: space-between;
-
-    &Right {
-      text-align: right;
-      font-size: 12px;
-      line-height: 1.6;
-    }
-
-    &Social {
-      margin-top: 0.5rem;
-      display: flex;
-      justify-content: flex-end;
-      grid-gap: 0.5rem;
-    }
-  }
-
   &JobTitle {
-    font-size: 12px;
-    margin-top: 1rem;
+    font-size: 0.8rem;
     font-weight: normal;
     color: #6C63FF;
   }
 
+  &HeaderSection {
+    
+    &Name {
+      display: flex;
+      flex-direction: column;
+      grid-gap: 0.5rem;
+      padding-bottom: 1.2rem;
+    }
+
+    &Contact {
+      font-size: 0.6rem;
+      display: flex;
+      grid-gap: 0.8rem;
+      line-height: 1.6;
+
+      &Item {
+        display: flex;
+        grid-gap:0.3rem;
+        align-items: center;
+      }
+    }
+
+    &Bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &Social {
+      display: flex;
+      grid-gap: 0.5rem;
+    }
+  }
+
+
   &Separator {
     margin: 1rem 0;
     border: 1px solid #DADADA;
+
+    &Edge{
+      margin: 1rem -2rem;
+      border-top: 1px solid #DADADA;
+      border-bottom: none;
+    }
   }
 
   &Section {
@@ -56,11 +78,6 @@
       margin-left: -1rem;
       color: #DADADA;
     }
-    &Layout {
-      display: grid;
-      grid-template-columns: 1fr 7rem;
-      grid-gap: 2rem;
-    }
   }
 
 
@@ -70,6 +87,7 @@
   }
 
   &SectionTitle {
+    color: #6C63FF;
     margin: 1.2rem 0 0.8rem;
   }
 
@@ -117,20 +135,19 @@
 
   &SkillList {
     margin: 0;
-    margin-left: 1.4rem;
     padding-inline-start: 0;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     list-style: none;
     display: flex;
-    flex-direction: column;
-    grid-gap: 0.3rem;
+    flex-wrap: wrap;
+    grid-gap: 0.5rem;
     &Item {
-      &:before {
-        position: absolute;
-        content: '--- ';
-        margin-left: -1.3rem;
-        color: #DADADA;
-      }
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 0.2rem;
+      font-weight: 500;
+      border: 1px solid #6C63FF;
+      color: #6C63FF;
     }
   }
 
