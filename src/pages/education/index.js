@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { Formik, Form, FieldArray } from "formik"
 import Input from '../../components/Input';
 import Button from '../../components/Button';
@@ -9,7 +9,7 @@ import useLocalStorage from '../../useLocalStorate';
 import { handleOnChange } from '../helpers';
 
 const EducationPage = () => {
-  const { storedValue: educationValues, setValue: setEducationValues } = useLocalStorage("education")
+  const { storedValue: educationValues, setValue: setEducationValues } = useLocalStorage("education");
 
   const initialValues = {
     education: [
@@ -23,13 +23,15 @@ const EducationPage = () => {
     ],
   };
 
+  const removeEducationItemFromStoredValue = (index) => {
+    const newEducationValues = educationValues.education.filter((_, i) => i !== index);
+    setEducationValues({ ...educationValues, education: newEducationValues });
+  }
+
   return (
     <div className="duo-layout">
       <Formik
         initialValues={educationValues || initialValues}
-        onSubmit={(values) => {
-          setEducationValues(values.education);
-        }}
       >
         {({ values, errors, touched }) => (
           <Form className="form" onChange={(changedValue) => handleOnChange({ values, changedValue, setValues: setEducationValues })}>
@@ -49,14 +51,17 @@ const EducationPage = () => {
                       <TextArea name={`education[${index}].description`} required type="text" label="Description" />
                       {values.education.length > 1 && (
                         <div className="buttonsWrapper">
-                          <IconButton type="remove" variant="secondary" onClick={() => remove(index)} />
+                          <IconButton type="remove" variant="secondary" onClick={() => {
+                            remove(index);
+                            removeEducationItemFromStoredValue(index);
+                          }} />
                         </div>
                       )}
                     </div>
                   ))}
                   {values.education.length < 3 && (
                     <div>
-                      <Button type="button" variant="secondary" onClick={() => push(initialValues.education[0])}>
+                      <Button type="button" variant="secondary" onClick={() => push({...initialValues.education[0]})}>
                         Add Education
                       </Button>
                     </div>
