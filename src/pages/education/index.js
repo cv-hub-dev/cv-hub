@@ -6,7 +6,7 @@ import IconButton from '../../components/IconButton';
 import TextArea from "../../components/TextArea";
 import Preview from "../../components/Preview";
 import useLocalStorage from '../../useLocalStorate';
-import { handleOnChange } from '../helpers';
+import { handleOnChangeArray } from '../helpers';
 
 const EducationPage = () => {
   const { storedValue: educationValues, setValue: setEducationValues } = useLocalStorage("education");
@@ -34,7 +34,7 @@ const EducationPage = () => {
         initialValues={educationValues || initialValues}
       >
         {({ values, errors, touched }) => (
-          <Form className="form" onChange={(changedValue) => handleOnChange({ values, changedValue, setValues: setEducationValues })}>
+          <Form className="form" onChange={(changedValue) => handleOnChangeArray({ values, changedValue, setValues: setEducationValues })}>
             <h3>Education</h3>
 
             <FieldArray name="education">
