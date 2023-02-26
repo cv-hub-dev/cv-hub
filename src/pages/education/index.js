@@ -51,10 +51,11 @@ const EducationPage = () => {
                       <TextArea name={`education[${index}].description`} required type="text" label="Description" />
                       {values.education.length > 1 && (
                         <div className="buttonsWrapper">
-                          <IconButton type="remove" variant="secondary" onClick={() => {
-                            remove(index);
-                            removeEducationItemFromStoredValue(index);
-                          }} />
+                          <IconButton type="remove" onClick={() => {
+                              remove(index);
+                              removeEducationItemFromStoredValue(index);
+                            }}
+                          />
                         </div>
                       )}
                     </div>
