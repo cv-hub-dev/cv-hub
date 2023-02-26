@@ -5,7 +5,7 @@
 
 .datesFieldsWrapper {
    display: flex;
-   justify-content: space-evenly;
+   justify-content: flex-start;
 }
 
 .checkboxLabel {
@@ -16,16 +16,3 @@
    align-items: center;
    grid-gap: 0.4rem;
  }
-
-// .addBtn {
-
-// }
-
-// .checkboxLabel {
-//    font-size:0.9rem;
-//    font-weight: 500;
-//    color: #000000;
-//    display:flex;
-//    align-items: center;
-//    grid-gap: 0.4rem;
-//  }
