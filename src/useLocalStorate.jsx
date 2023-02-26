@@ -17,12 +17,12 @@ const useLocalStorage = (key = "personal", initialValue = "") => {
   });
   
   const setValue = (value) => {
-      if (typeof window !== "undefined") {        
-        window.localStorage.setItem(key, JSON.stringify(value));
-        window.dispatchEvent(new Event("storage"));
-        setStoredValue(value)
-      }
+    if (typeof window !== "undefined") {        
+      window.localStorage.setItem(key, JSON.stringify(value));
+      window.dispatchEvent(new Event("storage"));
+      setStoredValue(value)
     }
+  }
 
 
   return {

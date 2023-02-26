@@ -1,6 +1,7 @@
 import * as React from "react"
 import "./DefaultTemplate.scss"
 import {defaultValues} from '../dummyData';
+import useLocalStorage from '../../../useLocalStorate';
 
 const skillGroupMapper = {
   javascript: {
@@ -27,10 +28,11 @@ const linkIcon = <svg width={12} xmlns="http://www.w3.org/2000/svg" viewBox="0 0
 const DefaultTemplate = ({values}) => {
   
   const {personal, education, experience, skills, complementary, awards, projects} = defaultValues
+  const { storedValue: educationValues } = useLocalStorage("education")
   const skillGroups = Object.keys(skills)
 
   if (!personal?.name) return null
-  
+  console.log(educationValues)
   return(
     <>
       <div className="defaultPaper">

@@ -57,7 +57,7 @@ const BoldTemplate = ({values}) => {
                   <h4 className="boldSectionTitle">Skills</h4>
                   <div className="boldSkillGroup">
                     <ul className="boldSkillList">
-                      {allSkills.map(skill => <li className="boldSkillListItem">{skill}</li>)}
+                      {allSkills.map(skill => <li key={skill} className="boldSkillListItem">{skill}</li>)}
                     </ul>
                   </div>
                 </div>
@@ -81,7 +81,7 @@ const BoldTemplate = ({values}) => {
                   <h4 className="boldSectionTitle">Work Experience</h4>
                   <ul className="boldSectionList">
                   {experience.jobs.map((job) => (
-                    <li className="boldSection">
+                    <li className="boldSection" key={`${job.jobTitle}-${job.companyName}`}>
                       <div className="boldSectionName">{job.jobTitle}, <em>{job.companyName}</em></div>
                       <div className="boldSectionDate">{job.startDate} - {job.endDate}</div>
                       <div className="boldSectionDesc">{job.description}</div>
@@ -95,7 +95,7 @@ const BoldTemplate = ({values}) => {
                   <h4 className="boldSectionTitle">Certifications</h4>
                   <ul className="boldSectionList">
                   {awards.certs.map((cert) => (
-                    <li className="boldSection">
+                    <li className="boldSection" key={cert.title}>
                       <div className="boldSectionName">{cert.title}</div>
                       <div className="boldSectionDate">{cert.year}</div>
                     </li>
@@ -108,7 +108,7 @@ const BoldTemplate = ({values}) => {
                   <h4 className="boldSectionTitle">Projects</h4>
                   <ul className="boldSectionList">
                   {projects.map((proj) => (
-                    <li className="boldSection">
+                    <li className="boldSection" key={proj.title}>
                       <div className="boldSectionName">{proj.title}</div>
                       <div className="boldSectionDate">
                         {proj.year}
@@ -127,7 +127,7 @@ const BoldTemplate = ({values}) => {
                 {complementary !== null && (
                   <div>
                     {complementary.sections.map((section) => (
-                      <>
+                      <key={section.label}>
                         <h4 className="boldSectionTitle">{section.label}</h4>
                         <div className="boldSkillGroup">
                           <ul className="boldSkillList">

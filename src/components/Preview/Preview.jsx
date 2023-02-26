@@ -49,7 +49,7 @@ const Preview = () => {
         <div className="previewMessage">
           Autosaved
         </div>
-        <div clasName="previewSelectGroup">
+        <div className="previewSelectGroup">
           <label className="previewSelectLabel" htmlFor="template">Template:</label>
           <select id="template" name="template" className="previewSelect" onChange={(e) => setTemplate(e.target.value)}>
             <option value="default">Default</option>
