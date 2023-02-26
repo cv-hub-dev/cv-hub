@@ -1,0 +1,28 @@
+.stepper {
+  display: flex;
+  background-color: #FFF;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  grid-gap: 0.5rem;
+  padding-top: 1rem;
+
+  &Item {
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #A9A9A9;
+    border-radius: 1rem;
+    background-color: #E6E6E6;
+    line-height: 1;
+    height: 1.4rem;
+    width: 1.4rem;
+
+    &Active {
+      color: #FFF;
+      background-color: #2FD7CD;
+    }
+  }
+}

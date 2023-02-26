@@ -17,8 +17,6 @@ const Preview = () => {
   const [template, setTemplate] = useState(`default`)
   const [allValues, setAllValues] = useState([])
 
-  console.log(template)
-
   window.addEventListener('storage', () => {
     let newValues = {}
     allKeys.forEach((singleKey) => {
