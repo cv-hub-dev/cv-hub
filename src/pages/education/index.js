@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import { Formik, Form, FieldArray } from "formik"
+import { Formik, Form, FieldArray, Field } from "formik"
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import IconButton from '../../components/IconButton';
@@ -19,6 +19,7 @@ const EducationPage = () => {
         startDate: "",
         endDate: "",
         description: "",
+        isCurrent: false,
       },
     ],
   };
@@ -28,10 +29,13 @@ const EducationPage = () => {
     setEducationValues({ ...educationValues, education: newEducationValues });
   }
 
+  const formValidation = () => {}
+
   return (
     <div className="duo-layout">
       <Formik
         initialValues={educationValues || initialValues}
+        validate={formValidation}
       >
         {({ values, errors, touched }) => (
           <Form className="form" onChange={(changedValue) => handleOnChange({ values, changedValue, setValues: setEducationValues })}>
@@ -40,13 +44,21 @@ const EducationPage = () => {
             <FieldArray name="education">
               {({ push, remove }) => (
                 <div className="displayContents">
-                  {values.education.map((_, index) => (
+                  {values.education.map((data, index) => (
                     <div key={index} className="displayContents">
                       <Input name={`education[${index}].schoolName`} required type="text" label="School Name" />
                       <Input name={`education[${index}].degree`} required type="text" label="Degree" />
                       <div className="formDateWrapper">
                         <Input name={`education[${index}].startDate`} required type="date" label="Start Date" />
-                        <Input name={`education[${index}].endDate`} required type="date" label="End Date" />
+                        {
+                          !data.isCurrent ? (
+                            <Input name={`education[${index}].endDate`} required type="date" label="End Date" />
+                          ) : null
+                        }
+                      </div>
+                      <div className="formCheckboxWrapper">
+                        <Field name={`education[${index}].isCurrent`} type="checkbox" id={`education-${index}-is-current`} />
+                        <label htmlFor={`education-${index}-is-current`}>I currently study here</label>
                       </div>
                       <TextArea name={`education[${index}].description`} required type="text" label="Description" />
                       {values.education.length > 1 && (

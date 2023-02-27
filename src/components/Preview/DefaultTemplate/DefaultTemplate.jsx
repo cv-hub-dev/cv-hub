@@ -32,7 +32,7 @@ const DefaultTemplate = ({values}) => {
   const skillGroups = Object.keys(skills)
 
   if (!personal?.name) return null
-  console.log(educationValues)
+
   return(
     <>
       <div className="defaultPaper">
