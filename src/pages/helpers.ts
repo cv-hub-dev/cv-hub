@@ -1,3 +1,6 @@
+import DataObjectParser from 'dataobject-parser/lib/utils/dataobject-parser'
+import merge from 'lodash.merge'
+
 export const handleOnChange = ({values, changedValue, setValues}) => {
   const changedKeyValPair = changedValue.target.type === `checkbox`
   ? {[changedValue.target.name]: changedValue.target.checked}
@@ -7,20 +10,15 @@ export const handleOnChange = ({values, changedValue, setValues}) => {
 
 
 export const handleOnChangeArray = ({values, changedValue, setValues}) => {
-  const changedArrayKeyName = changedValue.target.name.split(`[`)[0]
-  const changedField = changedValue.target.name.split(`.`)[1]
-  const changedIndex = changedValue.target.name.replace( /(^.*\[|\].*$)/g, '' );
 
-  const changedKeyValPair = changedValue.target.type === `checkbox`
-  ? {[changedField]: changedValue.target.checked}
-  : {[changedField]: changedValue.target.value}
+  const d = new DataObjectParser();
+  
+  changedValue.target.type === `checkbox`
+  ? d.set(changedValue.target.name, changedValue.target.checked)
+  : d.set(changedValue.target.name, changedValue.target.value)
 
-  const changedArray = values[changedArrayKeyName]
-  changedArray[changedIndex] = {...changedArray[changedIndex], ...changedKeyValPair}
-
-  const newArrayValues = {
-    [changedArrayKeyName]: changedArray
-  }
-
-  setValues({...values, ...newArrayValues})
+  const transposed = d.data();
+  const newValues = merge(values, transposed)
+  
+  setValues(newValues)
 }
