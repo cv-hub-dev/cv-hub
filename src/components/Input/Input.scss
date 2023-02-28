@@ -20,5 +20,6 @@
 .inputGroup {
   display:flex;
   flex-direction: column;
+  flex-grow: 1;
   grid-gap: 0.3rem;
 }

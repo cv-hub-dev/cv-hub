@@ -7,6 +7,11 @@ h1, h2, h3, h4 {
   margin: 0;
 }
 
+hr {
+  border: 1px solid #DADADA;
+  width: 100%;
+}
+
 .duo-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -40,4 +45,21 @@ h1, h2, h3, h4 {
 .formDateWrapper {
   display: flex;
   grid-gap: 1rem;
+}
+
+.inputWrapper {
+  display: flex;
+  grid-gap: 0.2rem;
+  align-items:flex-end;
+}
+
+.sectionGroup {
+  position: relative;
+  display: grid;
+  grid-gap: 1rem;
+}
+
+.absoluteBottomFloat {
+  position: absolute;
+  bottom: 3rem;
 }

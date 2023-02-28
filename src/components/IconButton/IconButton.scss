@@ -1,13 +1,23 @@
 .iconButton {
+  font-size: 0.8rem;
   border: none;
   box-shadow: none;
   border: 1px solid transparent;
-  font-size: 1rem;
-  padding: 0.5rem 1rem;
+  padding: 0.6rem;
   border-radius: 0.2rem;
-  font-weight: 600;
+  font-weight: 400;
   text-decoration: none;
-  display: inline-block;
+  display: inline-flex;
+  grid-gap: 0.5rem;
+  align-content: center;
+  align-items: center;
+  background: transparent;
+  transition: all 200ms ease-in-out;
+  cursor: pointer;
+  &:hover {
+    background: #f0f0f0;
+    filter: saturate(110%);
+  }
 }
 
 // .buttonSecondary {
