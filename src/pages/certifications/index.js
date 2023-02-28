@@ -7,8 +7,9 @@ import IconButton from '../../components/IconButton';
 import Preview from "../../components/Preview";
 import useLocalStorage from '../../useLocalStorate';
 import {handleOnChange, handleOnChangeArray} from '../helpers';
+import Stepper from "../../components/Stepper";
 
-const CertsPage = () => {
+const CertsPage = ({location}) => {
   const { storedValue: awardsValues, setValue: setAwardsValues } = useLocalStorage("awards");
 
   const initialValues = {
@@ -33,9 +34,11 @@ const CertsPage = () => {
 
   return (
     <div className="duo-layout">
-      <Formik
-        initialValues={awardsValues || initialValues}
-      >
+      <div className="sidebar">
+        <Stepper location={location} />
+        <Formik
+          initialValues={awardsValues || initialValues}
+        >
         {({ values, errors, touched }) => (
           <Form className="form" onChange={(changedValue) => handleOnChangeArray({ values, changedValue, setValues: setAwardsValues })}>
             <h3>Certifications and awards (Optional)</h3>
@@ -81,6 +84,7 @@ const CertsPage = () => {
           </Form>
         )}
       </Formik>
+      </div>
       <Preview />
     </div>
   )

@@ -6,6 +6,7 @@ import IconButton from '../../components/IconButton';
 import Preview from "../../components/Preview";
 import useLocalStorage from '../../useLocalStorate';
 import {handleOnChange, handleOnChangeArray} from '../helpers';
+import Stepper from "../../components/Stepper";
 
 
 const SectionOptions = ({options, sectionIndex}) => (
@@ -31,7 +32,7 @@ const SectionOptions = ({options, sectionIndex}) => (
         )}
     </FieldArray>
 )
-const ComplementaryPage = () => {
+const ComplementaryPage = ({location}) => {
   const { storedValue: complementaryValues, setValue: setComplementaryValues } = useLocalStorage("complementary");
 
   const initialValues = {
@@ -50,9 +51,11 @@ const ComplementaryPage = () => {
 
   return (
     <div className="duo-layout">
-      <Formik
+      <div className="sidebar">
+        <Stepper location={location} />
+        <Formik
         initialValues={complementaryValues || initialValues}
-      >
+        >
         {({ values, errors, touched }) => (
           <Form className="form" onChange={(changedValue) => handleOnChangeArray({ values, changedValue, setValues: setComplementaryValues })}>
             <h3>Complementary (Optional)</h3>
@@ -93,6 +96,7 @@ const ComplementaryPage = () => {
           </Form>
         )}
       </Formik>
+      </div>
       <Preview />
     </div>
   )
