@@ -77,7 +77,7 @@ const EducationPage = ({location}) => {
 
               <div className="buttonsWrapper">
                 <Button variant="secondary" to="/personal">Back</Button>
-              <Button to="/">Next</Button>
+              <Button to="/complementary">Next</Button>
               </div>
             </Form>
           )}
