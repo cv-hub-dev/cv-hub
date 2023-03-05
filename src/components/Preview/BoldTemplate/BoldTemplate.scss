@@ -3,7 +3,7 @@
   &Paper {
     background-color: white;
     width: 595px;
-    height: 842px;
+    min-height: 842px;
     scale: 0.8;
     padding: 2rem;
   }
@@ -62,6 +62,7 @@
       margin: 1rem -2rem;
       border-top: 1px solid #DADADA;
       border-bottom: none;
+      width: calc(100% + 4rem);
     }
   }
 
@@ -77,6 +78,17 @@
       content: '●';
       margin-left: -1rem;
       color: #DADADA;
+    }
+
+    &Order {
+      display: flex;
+      flex-direction: column;
+      &First {
+        order: 1;
+      }
+      &Second {
+        order: 2;
+      }
     }
   }
 

@@ -3,6 +3,7 @@ import {useEffect, useState} from "react"
 import DefaultTemplate from "./DefaultTemplate"
 import ClassicTemplate from "./ClassicTemplate"
 import BoldTemplate from "./BoldTemplate"
+import useLocalStorage from "../../useLocalStorate";
 import "./Preview.scss"
 
 const allKeys = ['personal', 'education', 'experience', 'skills', 'awards', 'complementary', 'projects']
@@ -14,8 +15,8 @@ const TemplateChoice = {
 }
 
 const Preview = () => {
-  const [template, setTemplate] = useState(`default`)
   const [allValues, setAllValues] = useState([])
+  const { storedValue: template, setValue: setTemplate } = useLocalStorage("template", "default")
 
   window.addEventListener('storage', () => {
     let newValues = {}
@@ -49,21 +50,14 @@ const Preview = () => {
         </div>
         <div className="previewSelectGroup">
           <label className="previewSelectLabel" htmlFor="template">Template:</label>
-          <select id="template" name="template" className="previewSelect" onChange={(e) => setTemplate(e.target.value)}>
+          <select value={template} id="template" name="template" className="previewSelect" onChange={(e) => setTemplate(e.target.value)}>
             <option value="default">Default</option>
             <option value="classic">Classic</option>
             <option value="bold">Bold</option>
-            <option value="json">JSON</option>
           </select>
         </div>
       </div>
-      {template === `json` ? (
-        <pre>
-          {JSON.stringify(allValues, null, 2)}
-        </pre>
-      ) : (
-        <Template values={allValues} />
-      )}
+      <Template values={allValues} />
   </div>
 )}
 

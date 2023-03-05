@@ -2,7 +2,7 @@ import * as React from "react"
 import { Link } from "gatsby"
 import "./Stepper.scss"
 
-const allPages = [`/personal/`, `/education/`, `/experience/`, `/skills/`, `/complementary/`, `/certifications/`, `/projects/`, `/export/`]
+const allPages = [`/personal/`, `/education/`, `/experience/`, `/skills/`, `/complementary/`, `/certifications/`, `/projects/`, `/finish/`]
 
 const Stepper = ({location}) => {
   const activeIndex = allPages.indexOf(location.pathname)
@@ -10,8 +10,6 @@ const Stepper = ({location}) => {
   allPages.forEach((page, i) => {
     if (i <= activeIndex) activeIndexes.push(i)
   })
-
-  console.log(activeIndexes)
 
   return (
     <div className={`stepper`}>

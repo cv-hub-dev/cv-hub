@@ -1,6 +1,5 @@
 import * as React from "react"
 import "./DefaultTemplate.scss"
-import {defaultValues} from '../dummyData';
 
 const skillGroupMapper = {
   javascript: {
@@ -26,8 +25,8 @@ const linkIcon = <svg width={12} xmlns="http://www.w3.org/2000/svg" viewBox="0 0
 
 const DefaultTemplate = ({values}) => {
   
-  const {personal, education, experience, skills, complementary, awards, projects} = defaultValues
-  const skillGroups = Object.keys(skills)
+  const {personal, education, experience, skills, complementary, awards, projects} = values
+  const skillGroups = skills && Object.keys(skills)
 
   if (!personal?.name) return null
   
@@ -54,40 +53,42 @@ const DefaultTemplate = ({values}) => {
         <hr className="defaultSeparator" />
         <div className="defaultSectionLayout">
           <div>
-          {education?.schools?.length && (
-              <div>
-                <h4 className="defaultSectionTitle">Education</h4>
-                <ul className="defaultSectionList">
-                {education.schools.map((school) => (
-                  <li className="defaultSection">
-                    <div className="defaultSectionName">{school.schoolName}, <em>{school.degree}</em></div>
-                    <div className="defaultSectionDate">{school.startDate} - {school.endDate}</div>
-                    <div className="defaultSectionDesc">{school.description}</div>
-                  </li>
-                ))}
-                </ul>
-              </div>
-            )}
-            {experience?.jobs?.length && (
-              <div>
-                <h4 className="defaultSectionTitle">Work Experience</h4>
-                <ul className="defaultSectionList">
-                {experience.jobs.map((job) => (
-                  <li className="defaultSection">
-                    <div className="defaultSectionName">{job.jobTitle}, <em>{job.companyName}</em></div>
-                    <div className="defaultSectionDate">{job.startDate} - {job.endDate}</div>
-                    <div className="defaultSectionDesc">{job.description}</div>
-                  </li>
-                ))}
-                </ul>
-              </div>
-            )}
+            <div className="defaultSectionOrder">
+              {education?.schools?.length && (
+                <div className={experience.showBeforeEducation && `defaultSectionOrderSecond`}>
+                  <h4 className="defaultSectionTitle">Education</h4>
+                  <ul className="defaultSectionList">
+                  {education.schools.map((school) => (
+                    <li className="defaultSection" key={school.schoolName}>
+                      <div className="defaultSectionName">{school.schoolName}{school.degree && <>, <em>{school.degree}</em></>}</div>
+                      <div className="defaultSectionDate">{school.startDate} - {school.endDate}</div>
+                      <div className="defaultSectionDesc">{school.description}</div>
+                    </li>
+                  ))}
+                  </ul>
+                </div>
+              )}
+              {experience?.jobs?.length && (
+                <div>
+                  <h4 className="defaultSectionTitle">Work Experience</h4>
+                  <ul className="defaultSectionList">
+                  {experience.jobs.map((job) => (
+                    <li className="defaultSection" key={job.jobTitle}>
+                      <div className="defaultSectionName">{job.jobTitle}, <em>{job.companyName}</em>, <em>{job.location}</em></div>
+                      <div className="defaultSectionDate">{job.startDate} - {job.endDate}</div>
+                      <div className="defaultSectionDesc">{job.description}</div>
+                    </li>
+                  ))}
+                  </ul>
+                </div>
+              )}
+            </div>
             {awards?.certs?.length && (
               <div>
                 <h4 className="defaultSectionTitle">Certifications</h4>
                 <ul className="defaultSectionList">
                 {awards.certs.map((cert) => (
-                  <li className="defaultSection">
+                  <li className="defaultSection" key={cert.title}>
                     <div className="defaultSectionName">{cert.title}</div>
                     <div className="defaultSectionDate">{cert.year}</div>
                   </li>
@@ -95,17 +96,17 @@ const DefaultTemplate = ({values}) => {
                 </ul>
               </div>
             )}
-            {projects?.length && (
+            {projects.projects?.length && (
               <div>
                 <h4 className="defaultSectionTitle">Projects</h4>
                 <ul className="defaultSectionList">
-                {projects.map((proj) => (
-                  <li className="defaultSection">
+                {projects.projects?.map((proj) => (
+                  <li className="defaultSection" key={proj.title}>
                     <div className="defaultSectionName">{proj.title}</div>
                     <div className="defaultSectionDate">
                       {proj.year}
-                      {proj.link && (
-                        <a className="defaultSectionLink" href="" target="_blank">{linkIcon}{`View here`}</a>
+                      {proj.url && (
+                        <a className="defaultSectionLink" href={proj.url} target="_blank">{linkIcon}{`View here`}</a>
                       )}
                     </div>
                     <div className="defaultSectionDesc">{proj.description}</div>
@@ -120,31 +121,31 @@ const DefaultTemplate = ({values}) => {
                 <div>
                   <h4 className="defaultSectionTitle">Skills</h4>
                   {skillGroups.map((group) => (
-                    <div className="defaultSkillGroup">
+                    <div className="defaultSkillGroup" key={skillGroupMapper[group].name}>
                       <div className="defaultSkillName">
                         <div className="defaultSkillNameIcon">{skillGroupMapper[group].icon}</div>
                         {skillGroupMapper[group].name}
                       </div>
                       <ul className="defaultSkillList">
-                        {skills[group].map(skill => <li>{skill}</li>)}
+                        {skills[group].map(skill => <li key={skill}>{skill}</li>)}
                       </ul>
                     </div>
                   ))}
                 </div>
               )}
               {complementary !== null && (
-                <div>
+                <>
                   {complementary.sections.map((section) => (
-                    <>
+                    <div key={section.label}>
                       <h4 className="defaultSectionTitle">{section.label}</h4>
                       <div className="defaultSkillGroup">
                         <ul className="defaultSkillList">
                           {section.options.map(option => <li className="defaultSkillListItem">{option}</li>)}
                         </ul>
                       </div>
-                    </>
+                    </div>
                   ))}
-                </div>
+                </>
               )}
             </div>
           </div>

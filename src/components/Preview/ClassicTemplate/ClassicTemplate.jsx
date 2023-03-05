@@ -1,6 +1,5 @@
 import * as React from "react"
 import "./ClassicTemplate.scss"
-import {defaultValues} from '../dummyData';
 
 const skillGroupMapper = {
   javascript: {
@@ -36,8 +35,8 @@ const icons = {
 
 const DefaultTemplate = ({values}) => {
   
-  const {personal, education, experience, skills, complementary, awards, projects} = defaultValues
-  const skillGroups = Object.keys(skills)
+  const {personal, education, experience, skills, complementary, awards, projects} = values
+  const skillGroups = skills && Object.keys(skills)
 
   if (!personal?.name) return null
   
@@ -57,8 +56,8 @@ const DefaultTemplate = ({values}) => {
         </div>
         {(personal.linkedin || personal.github) && (
           <div className="classicHeaderSectionSocial">
-            {personal.github && <a href={personal.github} target="_blank"><img width={14} height={14} src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" /></a>}
-            {personal.linkedin && <a href={personal.linkedin} target="_blank"><img width={14} height={14} src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" /></a>}
+            {personal.github && <a href={personal.github} target="_blank" rel="noopener"><img width={14} height={14} src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" /></a>}
+            {personal.linkedin && <a href={personal.linkedin} target="_blank" rel="noopener"><img width={14} height={14} src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" /></a>}
           </div>
           )
         }
@@ -96,34 +95,36 @@ const DefaultTemplate = ({values}) => {
           )}
         </div>
           <div>
-          {education?.schools?.length && (
-              <div>
-                <h4 className="classicSectionTitle"><span>{icons.education}</span>Education</h4>
-                <ul className="classicSectionList">
-                {education.schools.map((school) => (
-                  <li className="classicSection">
-                    <div className="classicSectionName">{school.schoolName}, <em>{school.degree}</em></div>
-                    <div className="classicSectionDate">{school.startDate} - {school.endDate}</div>
-                    <div className="classicSectionDesc">{school.description}</div>
-                  </li>
-                ))}
-                </ul>
-              </div>
-            )}
-            {experience?.jobs?.length && (
-              <div>
-                <h4 className="classicSectionTitle"><span>{icons.work}</span>Work Experience</h4>
-                <ul className="classicSectionList">
-                {experience.jobs.map((job) => (
-                  <li className="classicSection">
-                    <div className="classicSectionName">{job.jobTitle}, <em>{job.companyName}</em></div>
-                    <div className="classicSectionDate">{job.startDate} - {job.endDate}</div>
-                    <div className="classicSectionDesc">{job.description}</div>
-                  </li>
-                ))}
-                </ul>
-              </div>
-            )}
+            <div className="classicSectionOrder">
+              {education?.schools?.length && (
+                <div className={experience.showBeforeEducation && `classicSectionOrderSecond`}>
+                  <h4 className="classicSectionTitle"><span>{icons.education}</span>Education</h4>
+                  <ul className="classicSectionList">
+                  {education.schools.map((school) => (
+                    <li className="classicSection">
+                      <div className="classicSectionName">{school.schoolName}{school.degree &&<>, <em>{school.degree}</em></>}</div>
+                      <div className="classicSectionDate">{school.startDate} - {school.endDate}</div>
+                      <div className="classicSectionDesc">{school.description}</div>
+                    </li>
+                  ))}
+                  </ul>
+                </div>
+              )}
+              {experience?.jobs?.length && (
+                <div className={experience.showBeforeEducation && `classicSectionOrderFirst`}>
+                  <h4 className="classicSectionTitle"><span>{icons.work}</span>Work Experience</h4>
+                  <ul className="classicSectionList">
+                  {experience.jobs.map((job) => (
+                    <li className="classicSection">
+                      <div className="classicSectionName">{job.jobTitle}{job.companyName &&<>, <em>{job.companyName}</em></>}</div>
+                      <div className="classicSectionDate">{job.startDate} - {job.currentWork ? `currently` : job.endDate}</div>
+                      <div className="classicSectionDesc">{job.description}</div>
+                    </li>
+                  ))}
+                  </ul>
+                </div>
+              )}
+            </div>
             {awards?.certs?.length && (
               <div>
                 <h4 className="classicSectionTitle"><span>{icons.certs}</span>Certifications</h4>
@@ -137,17 +138,17 @@ const DefaultTemplate = ({values}) => {
                 </ul>
               </div>
             )}
-            {projects?.length && (
+            {projects.projects?.length && (
               <div>
                 <h4 className="classicSectionTitle"><span>{icons.projects}</span>Projects</h4>
                 <ul className="classicSectionList">
-                {projects.map((proj) => (
+                {projects.projects.map((proj) => (
                   <li className="classicSection">
                     <div className="classicSectionName">{proj.title}</div>
                     <div className="classicSectionDate">
                       {proj.year}
-                      {proj.link && (
-                        <a className="classicSectionLink" href="" target="_blank">{linkIcon}{`View here`}</a>
+                      {proj.url && (
+                        <a className="classicSectionLink" href={proj.url} rel="noopener" target="_blank">{linkIcon}{`View here`}</a>
                       )}
                     </div>
                     <div className="classicSectionDesc">{proj.description}</div>

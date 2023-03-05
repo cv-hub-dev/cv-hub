@@ -13,7 +13,7 @@ const CertsPage = ({location}) => {
   const { storedValue: awardsValues, setValue: setAwardsValues } = useLocalStorage("awards");
 
   const initialValues = {
-    awards: [
+    certs: [
       {
         title: "",
         type: "",
@@ -23,8 +23,8 @@ const CertsPage = ({location}) => {
   };
 
   const removeAwardItemFromStoredValue = (index) => {
-    const newAwardsValues = awardsValues.awards.filter((_, i) => i !== index);
-    setAwardsValues({ ...awardsValues, awards: newAwardsValues });
+    const newAwardsValues = awardsValues.certs.filter((_, i) => i !== index);
+    setAwardsValues({ ...awardsValues, certs: newAwardsValues });
   }
 
   const awardsTypes = [
@@ -41,45 +41,47 @@ const CertsPage = ({location}) => {
         >
         {({ values, errors, touched }) => (
           <Form className="form" onChange={(changedValue) => handleOnChangeArray({ values, changedValue, setValues: setAwardsValues })}>
-            <h3>Certifications and awards (Optional)</h3>
+            <div className="heading">
+              <h3>Certifications and awards <span className="optional">(Optional)</span></h3>
+              <hr />
+            </div>
 
-            <FieldArray name="awards">
+            <FieldArray name="certs">
               {({ push, remove }) => (
                 <div className="displayContents">
-                  {values.awards.map((_, index) => (
+                  {values.certs.map((_, index) => (
                     <div key={index} className="displayContents">
-                      <Input name={`awards[${index}].title`} required type="text" label="Title" />
-                      <Select name={`awards[${index}].type`} required>
+                      <Input name={`certs[${index}].title`} required type="text" label="Title" />
+                      <Select name={`certs[${index}].type`} required>
                         {awardsTypes.map(option => {
                           return <option value={option.value}>{option.name}</option>
                         })}
                       </Select>
-                      <Input name={`awards[${index}].year`} required type="number" label="Year" />
-                      {values.awards.length > 1 && (
-                        <div className="buttonsWrapper">
+                      <Input name={`certs[${index}].year`} required type="month" label="Date of completion" />
+                        {values.certs.length > 1 && (
                           <IconButton type="remove" variant="secondary" onClick={() => {
                             remove(index);
                             removeAwardItemFromStoredValue(index);
-                          }} />
-                        </div>
-                      )}
+                          }}>Remove award</IconButton>
+                        )}
+                      <hr />
                     </div>
                   ))}
-                  {values.awards.length < 3 && (
+                  {values.certs.length < 3 && (
                     <div>
                       <Button type="button" variant="secondary" onClick={() => push({...initialValues.awards[0]})}>
                         + Add another
                       </Button>
                     </div>
                   )}
-                  {errors.awards && touched.awards && <div>{errors.awards}</div>}
+                  {errors.certs && touched.certs && <div>{errors.certs}</div>}
                 </div>
               )}
             </FieldArray>
 
             <div className="buttonsWrapper">
               <Button variant="secondary" to="/complementary">Back</Button>
-            <Button to="/">Next</Button>
+              <Button to="/projects">Next</Button>
             </div>
           </Form>
         )}

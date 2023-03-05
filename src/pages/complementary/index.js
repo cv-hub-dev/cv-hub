@@ -12,7 +12,6 @@ const SectionOptions = ({ name, section, removeOptionFromStored, sectionIndex })
   <FieldArray name={name}>
     {({ push, remove }) => (
       <>
-      {console.log(section)}
         {section.options.map((_, optionIndex) => (
           <div key={optionIndex} className="inputWrapper">
             <Input
@@ -21,6 +20,7 @@ const SectionOptions = ({ name, section, removeOptionFromStored, sectionIndex })
               type="text"
               id={`${name}${optionIndex}`}
               label={`Option ${optionIndex + 1}`}
+              placeholder="English/Basketball/Etc"
             />
             {section.options.length > 1 && (
               <IconButton
@@ -90,7 +90,9 @@ const ComplementaryPage = ({ location }) => {
                 })
               }
             >
-              <h3>Complementary (Optional)</h3>
+              <h3>Complementary <span className="optional">(Optional)</span></h3>
+              <hr />
+              
 
               <FieldArray name="sections">
                 {({ push, remove }) => (
@@ -104,6 +106,7 @@ const ComplementaryPage = ({ location }) => {
                             required
                             type="text"
                             label="Section Title"
+                            placeholder="Languages/Hobbies/etc"
                           />
                           
                           <SectionOptions
@@ -147,7 +150,7 @@ const ComplementaryPage = ({ location }) => {
               </FieldArray>
 
               <div className="buttonsWrapper">
-                <Button variant="secondary" to="/education">
+                <Button variant="secondary" to="/skills">
                   Back
                 </Button>
                 <Button to="/certifications">Next</Button>
