@@ -26,6 +26,12 @@ module.exports = {
           include: /assets/
         }
       }
+    },
+    {
+      resolve: `gatsby-plugin-offline`,
+      options: {
+        precachePages: [`/src/*`],
+      },
     }
   ]
 };
