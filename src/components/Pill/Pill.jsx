@@ -1,11 +1,13 @@
 import * as React from "react"
+import {Field} from 'formik'
 import "./Pill.scss"
 
 const Pill = ({children, active, ...props}) => {
   return (
-    <button type="button" className={`pill ${active ? `pillActive` : ``}`} {...props}>
+    <label className={`pill ${active ? `pillActive` : ``}`}>
+      <Field className={`pillCheckbox`} type="checkbox" {...props} />
       {!active && `+ `}{children}
-    </button>
+    </label>
   )
 }
 

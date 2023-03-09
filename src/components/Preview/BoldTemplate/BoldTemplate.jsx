@@ -13,7 +13,11 @@ const BoldTemplate = ({values}) => {
   
   const {personal, education, experience, skills, complementary, awards, projects} = values
   
-  const skillGroups = skills && Object.keys(skills)
+  let skillGroups = []
+  if (skills) {
+    const {career, ...allSkills} = skills
+    skillGroups = allSkills && Object.keys(allSkills)
+  }
   let allSkills = [];
   skillGroups?.forEach(group => {
     allSkills = [...allSkills, ...skills[group]]
