@@ -42,7 +42,7 @@ const Preview = () => {
   const Template = TemplateChoice[template]
 
   return(
-    <div className="previewWrapper">
+    <div id="previewWrapper" className="previewWrapper">
       <div className="previewWrapperTopBar">
         <div className="previewMessage">
           Autosaved
