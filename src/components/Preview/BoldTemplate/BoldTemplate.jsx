@@ -1,6 +1,5 @@
 import * as React from "react"
 import "./BoldTemplate.scss"
-import {defaultValues} from '../dummyData';
 
 const linkIcon = <svg width={12} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="#6C63FF" d="M562.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L405.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C189.5 251.2 196 330 246 380c56.5 56.5 148 56.5 204.5 0L562.8 267.7zM43.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C57 372 57 321 88.5 289.5L200.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C416.5 260.8 410 182 360 132c-56.5-56.5-148-56.5-204.5 0L43.2 244.3z"/></svg>
 
@@ -12,14 +11,18 @@ const icons = {
 
 const BoldTemplate = ({values}) => {
   
-  const {personal, education, experience, skills, complementary, awards, projects} = defaultValues
-  console.log(complementary.sections)
-  const skillGroups = Object.keys(skills)
+  const {personal, education, experience, skills, complementary, awards, projects} = values
+  
+  let skillGroups = []
+  if (skills) {
+    const {career, ...allSkills} = skills
+    skillGroups = allSkills && Object.keys(allSkills)
+  }
   let allSkills = [];
-  skillGroups.forEach(group => {
+  skillGroups?.forEach(group => {
     allSkills = [...allSkills, ...skills[group]]
   })
-  complementary.sections.forEach(section => {
+  complementary?.sections?.forEach(section => {
     allSkills = [...allSkills, ...section.options]
   })
 
@@ -57,45 +60,47 @@ const BoldTemplate = ({values}) => {
                   <h4 className="boldSectionTitle">Skills</h4>
                   <div className="boldSkillGroup">
                     <ul className="boldSkillList">
-                      {allSkills.map(skill => <li className="boldSkillListItem">{skill}</li>)}
+                      {allSkills.map(skill => <li key={skill} className="boldSkillListItem">{skill}</li>)}
                     </ul>
                   </div>
                 </div>
               )}
-              {education?.schools?.length && (
-                <div>
-                  <h4 className="boldSectionTitle">Education</h4>
-                  <ul className="boldSectionList">
-                  {education.schools.map((school) => (
-                    <li className="boldSection">
-                      <div className="boldSectionName">{school.schoolName}, <em>{school.degree}</em></div>
-                      <div className="boldSectionDate">{school.startDate} - {school.endDate}</div>
-                      <div className="boldSectionDesc">{school.description}</div>
-                    </li>
-                  ))}
-                  </ul>
-                </div>
-              )}
-              {experience?.jobs?.length && (
-                <div>
-                  <h4 className="boldSectionTitle">Work Experience</h4>
-                  <ul className="boldSectionList">
-                  {experience.jobs.map((job) => (
-                    <li className="boldSection">
-                      <div className="boldSectionName">{job.jobTitle}, <em>{job.companyName}</em></div>
-                      <div className="boldSectionDate">{job.startDate} - {job.endDate}</div>
-                      <div className="boldSectionDesc">{job.description}</div>
-                    </li>
-                  ))}
-                  </ul>
-                </div>
-              )}
+              <div className="boldSectionOrder">
+                {education?.schools?.length && (
+                  <div className={experience.showBeforeEducation && `boldSectionOrderSecond`}>
+                    <h4 className="boldSectionTitle">Education</h4>
+                    <ul className="boldSectionList">
+                    {education.schools.map((school) => (
+                      <li className="boldSection" key={school.schoolName}>
+                        <div className="boldSectionName">{school.schoolName}, <em>{school.degree}</em></div>
+                        <div className="boldSectionDate">{school.startDate} - {school.endDate}</div>
+                        <div className="boldSectionDesc">{school.description}</div>
+                      </li>
+                    ))}
+                    </ul>
+                  </div>
+                )}
+                {experience?.jobs?.length && (
+                  <div>
+                    <h4 className="boldSectionTitle">Work Experience</h4>
+                    <ul className="boldSectionList">
+                    {experience.jobs.map((job) => (
+                      <li className="boldSection" key={`${job.companyName}-${job.jobTitle}`}>
+                        <div className="boldSectionName">{job.jobTitle}, <em>{job.companyName}</em></div>
+                        <div className="boldSectionDate">{job.startDate} - {job.endDate}</div>
+                        <div className="boldSectionDesc">{job.description}</div>
+                      </li>
+                    ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
               {awards?.certs?.length && (
                 <div>
                   <h4 className="boldSectionTitle">Certifications</h4>
                   <ul className="boldSectionList">
                   {awards.certs.map((cert) => (
-                    <li className="boldSection">
+                    <li className="boldSection" key={cert.title}>
                       <div className="boldSectionName">{cert.title}</div>
                       <div className="boldSectionDate">{cert.year}</div>
                     </li>
@@ -103,17 +108,17 @@ const BoldTemplate = ({values}) => {
                   </ul>
                 </div>
               )}
-              {projects?.length && (
+              {projects.projects?.length && (
                 <div>
                   <h4 className="boldSectionTitle">Projects</h4>
                   <ul className="boldSectionList">
-                  {projects.map((proj) => (
-                    <li className="boldSection">
+                  {projects.projects.map((proj) => (
+                    <li className="boldSection" key={proj.title}>
                       <div className="boldSectionName">{proj.title}</div>
                       <div className="boldSectionDate">
                         {proj.year}
-                        {proj.link && (
-                          <a className="boldSectionLink" href="" target="_blank">{linkIcon}{`View here`}</a>
+                        {proj.url && (
+                          <a className="boldSectionLink" href={proj.url} target="_blank" rel="noopener">{linkIcon}{`View here`}</a>
                         )}
                       </div>
                       <div className="boldSectionDesc">{proj.description}</div>
@@ -123,22 +128,6 @@ const BoldTemplate = ({values}) => {
                 </div>
               )}
               </div>
-              {/* <div>
-                {complementary !== null && (
-                  <div>
-                    {complementary.sections.map((section) => (
-                      <>
-                        <h4 className="boldSectionTitle">{section.label}</h4>
-                        <div className="boldSkillGroup">
-                          <ul className="boldSkillList">
-                            {section.options.map(option => <li className="boldSkillListItem">{option}</li>)}
-                          </ul>
-                        </div>
-                      </>
-                    ))}
-                  </div>
-                )}
-              </div> */}
             </div>
       </div>
     </>

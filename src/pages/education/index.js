@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { Formik, Form, FieldArray } from "formik"
 import Input from '../../components/Input';
 import Button from '../../components/Button';
@@ -13,7 +13,7 @@ const EducationPage = ({location}) => {
   const { storedValue: educationValues, setValue: setEducationValues } = useLocalStorage("education");
 
   const initialValues = {
-    education: [
+    schools: [
       {
         schoolName: "",
         degree: "",
@@ -25,8 +25,8 @@ const EducationPage = ({location}) => {
   };
 
   const removeEducationItemFromStoredValue = (index) => {
-    const newEducationValues = educationValues.education.filter((_, i) => i !== index);
-    setEducationValues({ ...educationValues, education: newEducationValues });
+    const newEducationValues = educationValues.schools.filter((_, i) => i !== index);
+    setEducationValues({ ...educationValues, schools: newEducationValues });
   }
 
   return (
@@ -38,46 +38,49 @@ const EducationPage = ({location}) => {
         >
           {({ values, errors, touched }) => (
             <Form className="form" onChange={(changedValue) => handleOnChangeArray({ values, changedValue, setValues: setEducationValues })}>
-              <h3>Education</h3>
-
-              <FieldArray name="education">
+              <div className="heading">
+                <h3>Education <span className="optional">(Optional)</span></h3>
+                <hr />
+              </div>
+              <FieldArray name="schools">
                 {({ push, remove }) => (
                   <div className="displayContents">
-                    {values.education.map((_, index) => (
-                      <div key={index} className="displayContents">
-                        <Input name={`education[${index}].schoolName`} required type="text" label="School Name" />
-                        <Input name={`education[${index}].degree`} required type="text" label="Degree" />
-                        <div className="formDateWrapper">
-                          <Input name={`education[${index}].startDate`} required type="date" label="Start Date" />
-                          <Input name={`education[${index}].endDate`} required type="date" label="End Date" />
-                        </div>
-                        <TextArea name={`education[${index}].description`} required type="text" label="Description" />
-                        {values.education.length > 1 && (
-                          <div className="buttonsWrapper">
+                    {values.schools.map((_, index) => (
+                      <div key={index} className="sectionGroup">
+                        <div key={index} className="displayContents">
+                          <Input name={`schools[${index}].schoolName`} required type="text" label="School Name" />
+                          <Input name={`schools[${index}].degree`} required type="text" label="Degree" />
+                          <div className="formDateWrapper">
+                            <Input name={`schools[${index}].startDate`} required type="month" label="Start Date" />
+                            <Input name={`schools[${index}].endDate`} type="month" label="End Date" />
+                          </div>
+                          <TextArea name={`schools[${index}].description`} required type="text" label="Description" />
+                          {values.schools.length > 1 && (
                             <IconButton type="remove" onClick={() => {
                                 remove(index);
                                 removeEducationItemFromStoredValue(index);
                               }}
-                            />
-                          </div>
-                        )}
+                            >Remove school</IconButton>
+                          )}
+                        </div>
+                        <hr />
                       </div>
                     ))}
-                    {values.education.length < 3 && (
+                    {values.schools.length < 3 && (
                       <div>
-                        <Button type="button" variant="secondary" onClick={() => push({...initialValues.education[0]})}>
-                          Add Education
+                        <Button type="button" variant="secondary" onClick={() => push({...initialValues.schools[0]})}>
+                          + Add Another
                         </Button>
                       </div>
                     )}
-                    {errors.education && touched.education && <div>{errors.education}</div>}
+                    {errors.schools && touched.schools && <div>{errors.schools}</div>}
                   </div>
                 )}
               </FieldArray>
 
               <div className="buttonsWrapper">
                 <Button variant="secondary" to="/personal">Back</Button>
-              <Button to="/complementary">Next</Button>
+                <Button to="/experience">Next</Button>
               </div>
             </Form>
           )}

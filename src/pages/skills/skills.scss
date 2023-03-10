@@ -1,0 +1,15 @@
+.skills {
+  &Group {
+    &Title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+  }
+  &PillWrapper {
+    margin-top: 0.5rem;
+    display: inline-flex;
+    grid-gap: 0.25rem;
+    flex-wrap: wrap;
+  }
+}

@@ -29,14 +29,20 @@ const PersonalPage = ({location}) => {
         <Formik initialValues={personalValues || initialValues}>
           {({values}) => (
           <Form className="form" onChange={(changedValue) => handleOnChange({values, changedValue, setValues: setPersonalValues})}>
-            <h3>General</h3>
+            <div className="heading">
+              <h3>General</h3>
+              <hr />
+            </div>
             <Input name="name" required type="text" label="Full Name" />
             <Input name="phone" type="tel" label="Phone number" />
             <Input name="email" type="email" label="Email address" />
             <Input name="address" type="text" label="Home address" />
             <Input name="title" type="text" label="Job Title" />
 
-            <h3>Social</h3>
+            <div className="heading">
+              <h3>Social <span className="optional">(Optional)</span></h3>
+              <hr />
+            </div>
             <Input name="linkedin" type="url" label="LinkedIn" />
             <Input name="github" type="url" label="GitHub" />
             <div className="buttonsWrapper">

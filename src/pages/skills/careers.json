@@ -1,0 +1,141 @@
+{
+  "dataScience": {
+    "python": [
+      "TensorFlow",
+      "NumPy",
+      "SciPy",
+      "Pandas",
+      "Matplotlib",
+      "Keras",
+      "SciKit-Learn",
+      "PyTorch"
+    ],
+    "java": [
+      "DL4J",
+      "ADAMS",
+      "JavaML",
+      "Mahout",
+      "Neuroph",
+      "RapidMiner",
+      "Weka"
+    ],
+    "scala": ["Breeze", "Spire", "Saddle", "Scalalab", "Smile", "Epic"],
+    "other": [
+      "MySQL",
+      "MongoDB",
+      "Oracle",
+      "Data Processing",
+      "Statistics",
+      "Data Visualisation",
+      "ML",
+      "Deep Learning",
+      "Big Data"
+    ]
+  },
+  "mobileAppDevelopment": {
+    "objective-c": ["Ionic", "Cocoa Touch", "Codename One"],
+    "swift": ["Swiftic", "Chatto", "SwiftShell"],
+    "javascript": ["React Native", "Native Scripts", "Sencha", "Onsen UI"],
+    "version-control": ["Git", "GitHub", "BitBucket", "GitLab", "SVN"],
+    "other": [
+      "Flutter",
+      "MySQL",
+      "MongoDB",
+      "iOS",
+      "Android",
+      "AWS",
+      "Azure",
+      "Google Cloud",
+      "Agile",
+      "Scrum"
+    ]
+  },
+  "webDevelopment": {
+    "html": ["html5", "slim", "haml", "pug", "liquid", "handlebars"],
+    "css": [
+      "CSS",
+      "CSS 3",
+      "SASS",
+      "Less",
+      "CSS-in-JS",
+      "Bootstrap",
+      "Materialize",
+      "Tailwind"
+    ],
+    "javascript": [
+      "React",
+      "Angular",
+      "Vue",
+      "jQuery",
+      "Node.js",
+      "Express",
+      "Jest"
+    ],
+    "php": ["Laravel", "Wordpress"],
+    "python": ["Flask", "Django", "Hug"],
+    "version-control": ["Git", "GitHub", "BitBucket", "GitLab", "SVN"],
+    "other": ["MySQL", "MongoDB", "Oracle", "RESTful", "HTTP", "JSON"]
+  },
+  "systemsEngineering": {
+    "c": ["facil.io", "Onion", "libreactor", "Duda"],
+    "cpp": ["ATL", "Asio", "Boost", "Cinder", "Eigen", "FloatX", "OpenCV"],
+    "other": [
+      "Requirement Analysis",
+      "Technical Writing",
+      "Project Management",
+      "Risk Management",
+      "Systems Design",
+      "Testing"
+    ]
+  },
+  "gameDevelopment": {
+    "cpp": ["SDL", "SFML", "Oxygine", "Ogre 3D", "Open GL", "Direct X"],
+    "c#": ["FNA", "XNA", "Otter 2D", "Unity"],
+    "java": ["FXGL", "libGDX", "LWJGL"],
+    "3d": ["Maya", "Blender", "3DS Max"],
+    "other": [
+      "Pathfinding",
+      "Decision-Making",
+      "Behaviour Trees",
+      "Multiplayer Development",
+      "Sound Effects",
+      "Music Composition",
+      "Testing"
+    ]
+  },
+  "dataEngineering": {
+    "python": [
+      "TensorFlow",
+      "NumPy",
+      "SciPy",
+      "Pandas",
+      "Matplotlib",
+      "Keras",
+      "SciKit-Learn",
+      "PyTorch"
+    ],
+    "java": [
+      "DL4J",
+      "ADAMS",
+      "JavaML",
+      "Mahout",
+      "Neuroph",
+      "RapidMiner",
+      "Weka"
+    ],
+    "scala": ["Breeze", "Spire", "Saddle", "Scalalab", "Smile", "Epic"],
+    "other": [
+      "MySQL",
+      "MongoDB",
+      "Oracle",
+      "Data Quality",
+      "Data Modelling",
+      "DevOps",
+      "Data Visualisation",
+      "ML",
+      "Deep Learning",
+      "Big Data"
+    ]
+  },
+	"other": {}
+}
