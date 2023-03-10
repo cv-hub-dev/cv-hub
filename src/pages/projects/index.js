@@ -79,7 +79,7 @@ const ProjectsPage = ({location}) => {
 
               <div className="buttonsWrapper">
                 <Button variant="secondary" to="/certifications">Go Back</Button>
-                <Button to="/finish">Next</Button>
+                <Button to="/export">Next</Button>
               </div>
             </Form>
           )}
