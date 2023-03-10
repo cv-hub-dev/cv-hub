@@ -40,7 +40,7 @@ const DefaultTemplate = ({values}) => {
           <div>
             <div className="defaultSectionOrder">
               {education?.schools?.length && (
-                <div className={experience.showBeforeEducation && `defaultSectionOrderSecond`}>
+                <div className={experience?.showBeforeEducation ? `defaultSectionOrderSecond` : ''}>
                   <h4 className="defaultSectionTitle">Education</h4>
                   <ul className="defaultSectionList">
                   {education.schools.map((school) => (
@@ -81,7 +81,7 @@ const DefaultTemplate = ({values}) => {
                 </ul>
               </div>
             )}
-            {projects.projects?.length && (
+            {projects?.projects?.length && (
               <div>
                 <h4 className="defaultSectionTitle">Projects</h4>
                 <ul className="defaultSectionList">
