@@ -51,16 +51,10 @@ export const handleOnChangeSkillsArray = ({values, changedValue, setValues, isCh
 
   const transposed = d.data();
 
-  console.log(values)
-  console.log(transposed)
-
   const mergedValues = merge(values, transposed)
   const mergedWithValues = mergeWith(values, transposed, (a, b) => 
     isArray(b) ? b : undefined
   )
-
-  console.log(mergedValues)
-  console.log(mergedWithValues)
 
   const newValues = uncheckedBox ? mergedWithValues : mergedValues
   
