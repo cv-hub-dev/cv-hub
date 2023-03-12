@@ -5,7 +5,7 @@ import Select from "../../components/Select";
 import Preview from "../../components/Preview";
 import Pill from "../../components/Pill";
 import useLocalStorage from "../../useLocalStorate";
-import { handleOnChangeArray } from "../helpers";
+import { handleOnChangeSkillsArray } from "../helpers";
 import Stepper from "../../components/Stepper";
 import * as careerData from "./careers.json";
 import "./skills.scss";
@@ -69,7 +69,7 @@ const SkillsPage = ({ location }) => {
             <Form
               className="form"
               onChange={(changedValue) =>
-                handleOnChangeArray({
+                handleOnChangeSkillsArray({
                   values,
                   changedValue,
                   setValues: setSkills,

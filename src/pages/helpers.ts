@@ -1,4 +1,5 @@
 import DataObjectParser from 'dataobject-parser/lib/utils/dataobject-parser'
+import merge from 'lodash.merge'
 import mergeWith from 'lodash.mergewith'
 import isArray from 'lodash.isarray'
 
@@ -10,7 +11,19 @@ export const handleOnChange = ({values, changedValue, setValues}) => {
 }
 
 
-export const handleOnChangeArray = ({values, changedValue, setValues, isCheckboxArray = false}) => {
+export const handleOnChangeArray = ({values, changedValue, setValues}) => {
+  const d = new DataObjectParser();
+
+  changedValue.target.type === `checkbox`
+  ? d.set(changedValue.target.name, changedValue.target.checked)
+  : d.set(changedValue.target.name, changedValue.target.value)
+  const transposed = d.data();
+  const newValues = merge(values, transposed)
+
+  setValues(newValues)
+}
+
+export const handleOnChangeSkillsArray = ({values, changedValue, setValues, isCheckboxArray = false}) => {
 
   const d = new DataObjectParser();
 
@@ -37,9 +50,19 @@ export const handleOnChangeArray = ({values, changedValue, setValues, isCheckbox
   }
 
   const transposed = d.data();
-  const newValues = mergeWith(values, transposed, (a, b) => 
+
+  console.log(values)
+  console.log(transposed)
+
+  const mergedValues = merge(values, transposed)
+  const mergedWithValues = mergeWith(values, transposed, (a, b) => 
     isArray(b) ? b : undefined
   )
+
+  console.log(mergedValues)
+  console.log(mergedWithValues)
+
+  const newValues = uncheckedBox ? mergedWithValues : mergedValues
   
   setValues(newValues)
 }
