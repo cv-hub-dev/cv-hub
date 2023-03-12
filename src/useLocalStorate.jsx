@@ -1,7 +1,6 @@
-import {useState} from 'react'
+import { useState } from "react";
 
 const useLocalStorage = (key = "personal", initialValue = "") => {
-
   const [storedValue, setStoredValue] = useState(() => {
     if (typeof window === "undefined") {
       return initialValue;
@@ -14,20 +13,19 @@ const useLocalStorage = (key = "personal", initialValue = "") => {
       return initialValue;
     }
   });
-  
-  const setValue = (value) => {
-      if (typeof window !== "undefined") {        
-        window.localStorage.setItem(key, JSON.stringify(value));
-        window.dispatchEvent(new Event("storage"));
-        setStoredValue(value)
-      }
-    }
 
+  const setValue = (value) => {
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem(key, JSON.stringify(value));
+      window.dispatchEvent(new Event("storage"));
+      setStoredValue(value);
+    }
+  };
 
   return {
     storedValue,
     setValue,
   };
-}
+};
 
-export default useLocalStorage
+export default useLocalStorage;
