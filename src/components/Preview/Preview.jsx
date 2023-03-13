@@ -18,16 +18,18 @@ const Preview = () => {
   const [allValues, setAllValues] = useState([])
   const { storedValue: template, setValue: setTemplate } = useLocalStorage("template", "default")
 
-  window.addEventListener('storage', () => {
-    let newValues = {}
-    allKeys.forEach((singleKey) => {
-      newValues = {
-        ...newValues,
-        [singleKey]: JSON.parse(window.localStorage.getItem(singleKey))
-      };
+  if (typeof window !== "undefined") {
+    window.addEventListener('storage', () => {
+      let newValues = {}
+      allKeys.forEach((singleKey) => {
+        newValues = {
+          ...newValues,
+          [singleKey]: JSON.parse(window.localStorage.getItem(singleKey))
+        };
+      })
+      setAllValues(newValues)
     })
-    setAllValues(newValues)
-  })
+  }
 
   useEffect(() => {
     let newValues = {}
