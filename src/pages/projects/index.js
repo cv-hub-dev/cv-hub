@@ -7,7 +7,7 @@ import TextArea from "../../components/TextArea";
 import Preview from "../../components/Preview";
 import Stepper from "../../components/Stepper";
 import useLocalStorage from '../../useLocalStorate';
-import { handleOnChangeArray } from '../helpers';
+import { handleOnChangeArray } from '../../helpers';
 
 const ProjectsPage = ({location}) => {
   const { storedValue: projectsValues, setValue: setProjectsValues } = useLocalStorage("projects");

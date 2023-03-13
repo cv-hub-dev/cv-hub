@@ -5,7 +5,7 @@ import Select from "../../components/Select";
 import Preview from "../../components/Preview";
 import Pill from "../../components/Pill";
 import useLocalStorage from "../../useLocalStorate";
-import { handleOnChangeSkillsArray } from "../helpers";
+import { handleOnChangeSkillsArray } from "../../helpers";
 import Stepper from "../../components/Stepper";
 import * as careerData from "./careers.json";
 import "./skills.scss";

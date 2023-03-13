@@ -7,7 +7,7 @@ import TextArea from "../../components/TextArea";
 import Preview from "../../components/Preview";
 import Stepper from "../../components/Stepper";
 import useLocalStorage from '../../useLocalStorate';
-import { handleOnChangeArray } from '../helpers';
+import { handleOnChangeArray } from '../../helpers';
 
 const EducationPage = ({location}) => {
   const { storedValue: educationValues, setValue: setEducationValues } = useLocalStorage("education");

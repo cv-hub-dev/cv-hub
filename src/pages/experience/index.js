@@ -8,7 +8,7 @@ import Preview from "../../components/Preview";
 import Checkbox from '../../components/Checkbox';
 import useLocalStorage from '../../useLocalStorate';
 import Stepper from "../../components/Stepper";
-import { handleOnChangeArray } from '../helpers';
+import { handleOnChangeArray } from '../../helpers';
 
 const ExperiencePage = ({location}) => {
   const { storedValue: experienceValues, setValue: setExperienceValues } = useLocalStorage("experience");

@@ -5,7 +5,7 @@ import Button from '../../components/Button';
 import Preview from '../../components/Preview';
 import Stepper from '../../components/Stepper';
 import useLocalStorage from '../../useLocalStorate';
-import { handleOnChange } from '../helpers';
+import { handleOnChange } from '../../helpers';
 
 
 const PersonalPage = ({location}) => {

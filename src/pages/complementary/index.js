@@ -5,7 +5,7 @@ import Button from "../../components/Button";
 import IconButton from "../../components/IconButton";
 import Preview from "../../components/Preview";
 import useLocalStorage from "../../useLocalStorate";
-import { handleOnChangeArray } from "../helpers";
+import { handleOnChangeArray } from "../../helpers";
 import Stepper from "../../components/Stepper";
 
 const SectionOptions = ({ name, section, removeOptionFromStored, sectionIndex }) => (

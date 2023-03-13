@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { Formik, Form, FieldArray } from "formik"
 import Input from '../../components/Input';
 import Select from '../../components/Select';
@@ -6,7 +6,7 @@ import Button from '../../components/Button';
 import IconButton from '../../components/IconButton';
 import Preview from "../../components/Preview";
 import useLocalStorage from '../../useLocalStorate';
-import {handleOnChange, handleOnChangeArray} from '../helpers';
+import {handleOnChangeArray} from '../../helpers';
 import Stepper from "../../components/Stepper";
 
 const CertsPage = ({location}) => {
