@@ -81,7 +81,7 @@ const DefaultTemplate = ({values}) => {
           <div>
             <div className="classicSectionOrder">
               {education?.schools?.length && (
-                <div className={experience.showBeforeEducation && `classicSectionOrderSecond`}>
+                <div className={experience?.showBeforeEducation && `classicSectionOrderSecond`}>
                   <h4 className="classicSectionTitle"><span>{icons.education}</span>Education</h4>
                   <ul className="classicSectionList">
                   {education.schools.map((school) => (

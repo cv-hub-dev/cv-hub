@@ -67,7 +67,7 @@ const BoldTemplate = ({values}) => {
               )}
               <div className="boldSectionOrder">
                 {education?.schools?.length && (
-                  <div className={experience.showBeforeEducation && `boldSectionOrderSecond`}>
+                  <div className={experience?.showBeforeEducation && `boldSectionOrderSecond`}>
                     <h4 className="boldSectionTitle">Education</h4>
                     <ul className="boldSectionList">
                     {education.schools.map((school) => (
